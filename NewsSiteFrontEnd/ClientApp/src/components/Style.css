@@ -1,0 +1,124 @@
+body {
+    background-color: pink;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+    a:link {
+        color: black;
+    }
+    /* visited link */
+
+    a:visited {
+        color: black;
+    }
+    /* mouse over link */
+    a:hover {
+        color: red;
+    }
+
+.Container {
+    display: grid;
+    grid-auto-rows: 3.5em 80em 15em;
+}
+
+.textandpic {
+    display: flex;
+}
+
+.texts {
+    flex: 4;
+}
+
+.textandpic img {
+    flex: 1.2;
+    margin-top: 1em;
+}
+
+.singleNews h2 {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    line-height: 1em;
+}
+
+.singleNews {
+    height: 10em;
+}
+
+.Container header {
+    padding-left: 4px;
+    padding-top: 2px;
+    padding-right: 4px;
+    display: flex;
+    background-color: red;
+    align-items: center;
+}
+
+.Container footer {
+    display: flex;
+    background-color: #003865;
+}
+
+.mainPage {
+    background-color: white;
+    margin-left: 20px;
+    margin-right: 20px;
+    display: flex;
+}
+
+    .mainPage nav {
+        margin-right: 1px;
+        flex: 1;
+    }
+
+    .mainPage section {
+        display: grid;
+        grid-auto-rows: repeat(8,10em);
+        margin-right: 10px;
+        flex: 3;
+    }
+
+.icon {
+    flex: 1;
+}
+
+.siteText {
+    flex: 8;
+}
+
+.list {
+    flex: 1;
+    line-height: 1.2em;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.blank {
+    flex: 1;
+}
+
+.list a {
+    color: white;
+}
+
+    .list a:link {
+        color: white;
+    }
+    /* visited link */
+
+    .list a:visited {
+        color: white;
+    }
+    /* mouse over link */
+    .list a:hover {
+        color: red;
+    }
+
+.list b {
+    color: black;
+}
