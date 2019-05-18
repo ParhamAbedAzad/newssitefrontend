@@ -1,7 +1,8 @@
 body {
-    background-color: pink;
+    /*background-color: pink;*/
     padding: 0;
     margin: 0;
+
 }
 
 a {
@@ -50,11 +51,11 @@ a {
 }
 
 .Container header {
-    padding-left: 4px;
+    padding-left: 20px;
     padding-top: 2px;
     padding-right: 4px;
     display: flex;
-    background-color: red;
+    background-color: #941111;
     align-items: center;
 }
 
@@ -84,10 +85,13 @@ a {
 
 .icon {
     flex: 1;
+
 }
 
 .siteText {
+    font-size: 20px;
     flex: 8;
+    color: white
 }
 
 .list {

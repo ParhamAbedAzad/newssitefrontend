@@ -1,8 +1,10 @@
 body{
-  background-color: pink; 
+  /*background-color: pink;*/ 
   padding: 0;
   margin: 0;
+
 }
+
 a{
     text-decoration: none;
 }
@@ -43,11 +45,11 @@ a:hover {
 }
 .Container header{
 
-  padding-left: 4px;
+  padding-left: 20px;
   padding-top: 2px;
   padding-right: 4px;
   display: flex;
-  background-color: red;
+  background-color: #941111;
   align-items: center;
 }
 .Container footer{
@@ -75,8 +77,10 @@ a:hover {
   flex: 1;
 
 }
-.siteText{
-  flex: 8;
+.siteText {
+    flex: 8;
+    font-size: 20px;
+    color: white
 }
 .list{
   flex: 1;

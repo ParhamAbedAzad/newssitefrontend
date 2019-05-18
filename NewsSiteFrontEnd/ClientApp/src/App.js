@@ -33,8 +33,10 @@ export default class App extends Component {
     }
   render () {
       return (
-
           <div className="mainPage">
+
+              </div>
+       /*   <div className="mainPage">
               <section>
                   <div className="singleNews">
                       <div className="textandpic">
@@ -101,7 +103,7 @@ export default class App extends Component {
               <nav>
                   <img src="img/login.png" alt width="400em" />
               </nav>
-          </div>
+          </div>*/
       /*<Layout>
         <Route exact path='/' component={Home} />
         <Route path='/counter' component={Counter} />
