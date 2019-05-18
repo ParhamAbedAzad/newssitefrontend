@@ -29,7 +29,9 @@ a {
 .textandpic {
     display: flex;
 }
-
+.mainPage {
+    height: 80em;
+}
 .texts {
     flex: 4;
 }
@@ -45,9 +47,6 @@ a {
     line-height: 1em;
 }
 
-.singleNews {
-    height: 10em;
-}
 
 .Container header {
     padding-left: 4px;
