@@ -21,9 +21,24 @@ a {
         color: red;
     }
 
+.FullNews {
+    float: left;
+}
+
+    .FullNews img {
+        float: left;
+        padding-top: 50px;
+        padding-right: 5px;
+        padding-bottom: 1px;
+    }
+
+.siteText a:hover {
+    color: aqua;
+}
+
 .Container {
     display: grid;
-    grid-auto-rows: 3.5em 80em 15em;
+    grid-auto-rows: 3.5em 65em 15em;
 }
 
 .textandpic {
@@ -31,7 +46,7 @@ a {
 }
 
 .mainPage {
-    height: 80;
+    height: 80em;
 }
 
 .texts {
@@ -49,9 +64,6 @@ a {
     line-height: 1em;
 }
 
-.singleNews {
-    height: 1em;
-}
 
 .Container header {
     padding-left: 4px;

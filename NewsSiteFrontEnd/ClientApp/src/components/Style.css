@@ -20,7 +20,18 @@ a {
     a:hover {
         color: red;
     }
-
+.FullNews {
+    float: left;
+}
+.FullNews img{
+    float: left;
+    padding-top: 50px;
+    padding-right: 5px;
+    padding-bottom: 1px;
+}
+.siteText a:hover{
+    color:aqua;
+}
 .Container {
     display: grid;
     grid-auto-rows: 3.5em 80em 15em;

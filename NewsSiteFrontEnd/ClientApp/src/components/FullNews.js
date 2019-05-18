@@ -1,6 +1,6 @@
 ﻿import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-export class SingleNews extends Component {
+export class FullNews extends Component {
     singleNews = {
         "id": 11,
         "title": "sth sth sth",
@@ -8,17 +8,18 @@ export class SingleNews extends Component {
         "dateAdded": "2019-05-16T19:28:41.943",
         "adminId": 2
     }
+    componcomponentdidMount() {
+        axios.get(this.link + "/news/" + ).then(res => this.arr = res);
+    }
     render() {
         return (
-
-
             <div className="singleNews">
                 <div className="textandpic">
                     <div className="texts">
-                        <a href={"./news/" + this.props.new.id}><h2>{this.props.new.title}</h2></a>
-                        <p>{this.props.new.text.split(' ').slice(0, 40).join(' ')}'</p>
+                        <a href="MyPage.html"><h2>{this.props.new.title}</h2></a>
+                        <p>{this.props.new.text}'</p>
                     </div>
-                    <img src="img/Vampire-the-Masquerade-Bloodlines.jpg" alt="titleIMG" width="200em" height="100em" />
+                    <img src="img/Vampire-the-Masquerade-Bloodlines.jpg" alt="titleIMG" width="500em" height="250em" />
                 </div>
             </div>
         );
