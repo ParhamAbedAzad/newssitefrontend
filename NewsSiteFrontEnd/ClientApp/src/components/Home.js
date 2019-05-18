@@ -4,7 +4,8 @@ import { SingleNews } from './News.js';
 import axios from 'axios';
 export class Home extends Component {
     static displayName = Home.name;
-    link = "";
+
+    link = "http://localhost:44335";
     arr = [];
     componcomponentdidMount() {
         axios.get(this.link + "/news/1/6").then(res => this.arr = res);

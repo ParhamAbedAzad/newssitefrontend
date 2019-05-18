@@ -10,8 +10,6 @@ export class SingleNews extends Component {
     }
     render() {
         return (
-
-
             <div className="singleNews">
                 <div className="textandpic">
                     <div className="texts">
@@ -22,7 +20,7 @@ export class SingleNews extends Component {
                 </div>
             </div>
         );
-
+      
 
     }
 }
