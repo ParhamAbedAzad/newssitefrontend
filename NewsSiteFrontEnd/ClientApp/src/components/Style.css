@@ -17,19 +17,24 @@ a {
     flex: 8;
 }
 #siteText:hover {
-    color: red;
+    color: white;
     text-shadow: 1px 1px 2px white, 0 0 1em white, 0 0 0.2em white;
-    text-shadow: 10px 10px 10px white;
+    text-shadow: 5px 5px 5px black;
+    font-family:Andalus;
 }
 #siteText {
     color: white;
-    text-shadow: 10px 10px 10px red;
+    text-shadow: 2px 2px 2px black;
+    font-family: Andalus;
+    font-size:42px;
+}
+.imgnews{
+    border-radius: 15px;
 }
 
-
-    a:link {
-        color: black;
-    }
+a:link {
+    color: black;
+}
     /* visited link */
 
     a:visited {
@@ -43,6 +48,7 @@ a {
 .FullNews {
     float: left;
     font-size:19px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
 }
 .FullNews img{
     float: left;
