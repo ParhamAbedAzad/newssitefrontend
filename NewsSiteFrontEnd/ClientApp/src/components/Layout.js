@@ -9,18 +9,19 @@ export class Layout extends Component {
       return (
               <div className="Container">
                   <header>
-                      <div className="siteText">
+                  <div className="siteText">
                       {/* <a href="MyPage.html"><img src="img/SkyNews.png"  alt="Icon" width="200px" height="50px"><a> */}
-                      <a href="./"><h1>  بهتربن سایت خبری ایران و جهان</h1></a> 
-                      </div>
-                      <div className="icon">
-                          <a href="./"><img src="img/SkyNews.png" alt="Icon" width="200px" height="50px" /></a>
-                      </div>
+                      <h1> <a href="./" id="siteText" >بهترین سایت خبری ایران و جهان</a> </h1>
+                  </div>
+                  <div className="icon">
+                          <a href="./"><img src="img/SkyNews.jpg" alt="Icon" width="200px" height="60px" /></a>
+                  </div>
+
                    </header>
               {this.props.children}
               <footer>
                   <div className="list">
-                      <b>حقوقی</b><br /><br />
+                      <b>حقوقی</b><br />
                       <a href="ContactUs.html">کوکی ها</a><br />
                       <a href="ContactUs.html">درباره ما</a><br />
                       <a href="ContactUs.html">شرایط و ضوابط</a><br />

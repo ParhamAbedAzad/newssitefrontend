@@ -1,12 +1,31 @@
 body {
-    background-color: pink;
+    background-color: #808080;
     padding: 0;
     margin: 0;
 }
-
+h2{
+    font-family:'Courier New';
+    font-size:35px;
+    text-decoration:underline;
+}
 a {
     text-decoration: none;
+    color:black;
 }
+.siteText {
+    
+    flex: 8;
+}
+#siteText:hover {
+    color: red;
+    text-shadow: 1px 1px 2px white, 0 0 1em white, 0 0 0.2em white;
+    text-shadow: 10px 10px 10px white;
+}
+#siteText {
+    color: white;
+    text-shadow: 10px 10px 10px red;
+}
+
 
     a:link {
         color: black;
@@ -14,7 +33,8 @@ a {
     /* visited link */
 
     a:visited {
-        color: black;
+        
+       color: black;
     }
     /* mouse over link */
     a:hover {
@@ -22,6 +42,7 @@ a {
     }
 .FullNews {
     float: left;
+    font-size:19px;
 }
 .FullNews img{
     float: left;
@@ -29,9 +50,7 @@ a {
     padding-right: 5px;
     padding-bottom: 1px;
 }
-.siteText a:hover{
-    color:aqua;
-}
+
 .Container {
     display: grid;
     grid-auto-rows: 3.5em 80em 15em;
@@ -42,6 +61,7 @@ a {
 }
 .mainPage {
     height: 80em;
+   
 }
 .texts {
     flex: 4;
@@ -56,25 +76,27 @@ a {
     margin-bottom: 0;
     padding-bottom: 0;
     line-height: 1em;
+
 }
 
 
 .Container header {
-    padding-left: 4px;
+    padding-left: 20px;
     padding-top: 2px;
-    padding-right: 4px;
+    padding-right: 20px;
     display: flex;
-    background-color: red;
+    background-color: #373737;
     align-items: center;
+    color:inherit;
 }
 
 .Container footer {
     display: flex;
-    background-color: #003865;
+    background-color: #373737;  
 }
 
 .mainPage {
-    background-color: white;
+    background-color: #e2e2e2;
     margin-left: 20px;
     margin-right: 20px;
     display: flex;
@@ -87,18 +109,18 @@ a {
 
     .mainPage section {
         display: grid;
-        grid-auto-rows: repeat(8,10em);
+        grid-auto-rows:repeat(8,10em);
         margin-right: 10px;
         flex: 3;
     }
 
 .icon {
     flex: 1;
+    border-radius: 25px;
 }
 
-.siteText {
-    flex: 8;
-}
+
+
 
 .list {
     flex: 1;
@@ -130,5 +152,7 @@ a {
     }
 
 .list b {
-    color: black;
+    color: #e53131;
+    text-shadow: 1px 1px 1px black;
+    font-family:Andalus  
 }
