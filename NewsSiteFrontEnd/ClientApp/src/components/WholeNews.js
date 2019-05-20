@@ -28,7 +28,6 @@ export class WholeNews extends Component {
     }
     
     render() {
-        console.log(this.state.singleNews)
         return (
             <div className="mainPage">
                 <section>
@@ -40,9 +39,6 @@ export class WholeNews extends Component {
                         </div>
                     </div>
                 </section>
-                <nav>
-                    <img src="img/login.png" alt width="400em" />
-                </nav>
             </div>
             );
     }

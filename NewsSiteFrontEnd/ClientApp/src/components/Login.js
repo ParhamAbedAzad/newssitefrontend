@@ -1,21 +1,20 @@
 ﻿import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+
 export class Login extends Component {
     obj = null;
     link = "https://localhost:44335/Users/authenticate";
     constructor(props) {
         super(props);
-
         this.state = {
             username: "",
             password: ""
         };
-
-         this.handlePassChange = this.handlePassChange.bind(this);
-    this.handleUserChange = this.handleUserChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.dismissError = this.dismissError.bind(this);
+        this.handlePassChange = this.handlePassChange.bind(this);
+        this.handleUserChange = this.handleUserChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.dismissError = this.dismissError.bind(this);
     }
 
     getHtml() {
@@ -30,7 +29,6 @@ export class Login extends Component {
                 }
                 <label>User Name</label>
                 <input type="text" data-test="username" value={this.state.username} onChange={this.handleUserChange} />
-
                 <label>Password</label>
                 <input type="password" data-test="password" value={this.state.password} onChange={this.handlePassChange} />
 
@@ -48,7 +46,6 @@ export class Login extends Component {
 
     handleSubmit(evt) {
         evt.preventDefault();
-
         if (!this.state.username) {
             return this.setState({ error: 'Username is required' });
         }
@@ -76,18 +73,25 @@ export class Login extends Component {
         });
     }
 
-    
-
     render() {
-
         return (
-            <div className="Login">
-                {this.getHtml()}
-            </div>
-        ); 
-
-
+            <section id="login">
+                <div className="login_box">
+                    <form className="login_form" action="">
+                        <div className="input_box">
+                            <i className="icon fas fa-user"></i><input className="input_field" type="text" placeholder="yourname@gmail.com" name="email" />
+                        </div>
+                        <div className="input_box">
+                            <i className="icon fas fa-lock"></i><input className="input_field" type="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" name="password" />
+                        </div>
+                        <div className="forgot_pw">
+                            <a href="#">کلمه عبور را فراموش کرده اید؟</a>
+                        </div>
+                        <button className="submit_btn" type="submit">ورود</button>
+                        <a className="signup_btn" href="./SignUp">ثبت نام</a>
+                    </form>
+                </div>
+            </section>
+        );
     }
-
-
 }

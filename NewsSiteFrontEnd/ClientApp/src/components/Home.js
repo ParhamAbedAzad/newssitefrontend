@@ -20,8 +20,6 @@ export class Home extends Component {
     
   render () {
       return (
-          
-              
           <div className="mainPage">
               <section>
                   <SingleNews new={Object(this.state.newsArr[0])}></SingleNews>
@@ -31,9 +29,6 @@ export class Home extends Component {
                   <SingleNews new={Object(this.state.newsArr[4])}></SingleNews>
                   <SingleNews new={Object(this.state.newsArr[5])}></SingleNews>
               </section>
-              <nav>
-                  <Login></Login>
-              </nav>
           </div>
     );
   }
