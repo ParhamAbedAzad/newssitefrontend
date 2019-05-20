@@ -40,12 +40,13 @@ a {
 a:link {
     color: black;
 }
-/* visited link */
+
 
 a:visited {
     color: black;
 }
-/* mouse over link */
+
+
 a:hover {
     color: red;
 }
@@ -85,7 +86,11 @@ a:hover {
     flex: 1.2;
     margin-top: 1em;
 }
+.singleNews {
+    border-bottom: solid #373737 1px;
 
+
+}
 .singleNews h2 {
     margin-bottom: 0;
     padding-bottom: 0;
@@ -170,5 +175,3 @@ a:hover {
     text-shadow: 1px 1px 1px black;
     font-family: 'IRANSans';
 }
-
-

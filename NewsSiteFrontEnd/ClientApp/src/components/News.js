@@ -33,12 +33,10 @@ export class SingleNews extends Component {
                         <a href={"./news/" + this.props.new.id}><h2>{this.props.new.title}</h2></a>
                         <p>{String(this.props.new.text).split(' ').slice(0, 40).join(' ')}'</p>
                     </div>
-                    <img src={'/img/' + this.props.new.id + '.jpg'} alt="titleIMG" width="200em" height="100em" />
+                    <img src={'/img/' + this.props.new.id + '.jpg'} alt="titleIMG" width="200em" height="180em" />
                 </div>
             </div>
         );
-
-
     }
 }
 SingleNews.propTypes = {
