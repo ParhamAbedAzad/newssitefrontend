@@ -2,29 +2,37 @@
 import './Style.css';
 import { SingleNews } from './News.js';
 import axios from 'axios';
+import { Login } from './Login.js';
 export class Home extends Component {
     static displayName = Home.name;
+    link = "https://localhost:44335/news/1/6";
+    new = [];
+    constructor(props) {
+        super(props);
 
-    link = "http://localhost:44335";
-    arr = [];
-    componcomponentdidMount() {
-        axios.get(this.link + "/news/1/6").then(res => this.arr = res);
+        this.state = {
+            newsArr: [{}]
+        };
     }
+    componentWillMount() {
+        axios.get(this.link).then(res => this.setState({newsArr: res.data}));
+    }
+    
   render () {
       return (
           
               
           <div className="mainPage">
               <section>
-                  <SingleNews new={this.arr[0]}></SingleNews>
-                  <SingleNews new={this.arr[1]}></SingleNews>
-                  <SingleNews new={this.arr[2]}></SingleNews>
-                  <SingleNews new={this.arr[3]}></SingleNews>
-                  <SingleNews new={this.arr[4]}></SingleNews>
-                  <SingleNews new={this.arr[5]}></SingleNews>
+                  <SingleNews new={Object(this.state.newsArr[0])}></SingleNews>
+                  <SingleNews new={Object(this.state.newsArr[1])}></SingleNews>
+                  <SingleNews new={Object(this.state.newsArr[2])}></SingleNews>
+                  <SingleNews new={Object(this.state.newsArr[3])}></SingleNews>
+                  <SingleNews new={Object(this.state.newsArr[4])}></SingleNews>
+                  <SingleNews new={Object(this.state.newsArr[5])}></SingleNews>
               </section>
               <nav>
-                  <img src="img/login.png" alt width="400em" />
+                  <Login></Login>
               </nav>
           </div>
     );

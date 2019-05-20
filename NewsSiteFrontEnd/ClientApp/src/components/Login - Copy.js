@@ -2,7 +2,6 @@
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 export class Login extends Component {
-    obj = null;
     link = "https://localhost:44335/Users/authenticate";
     constructor(props) {
         super(props);
@@ -18,28 +17,9 @@ export class Login extends Component {
     this.dismissError = this.dismissError.bind(this);
     }
 
-    getHtml() {
-        if (this.obj == null) {
-            return <form onSubmit={this.handleSubmit}>
-                {
-                    this.state.error &&
-                    <h3 data-test="error" onClick={this.dismissError}>
-                        <button onClick={this.dismissError}>✖</button>
-                        {this.state.error}
-                    </h3>
-                }
-                <label>User Name</label>
-                <input type="text" data-test="username" value={this.state.username} onChange={this.handleUserChange} />
 
-                <label>Password</label>
-                <input type="password" data-test="password" value={this.state.password} onChange={this.handlePassChange} />
-
-                <input type="submit" value="Log In" data-test="submit" />
-            </form>
-        }
-        else {
-            return <p>you are signed in</p>
-        }
+    componentWillMount() {
+        axios.post
     }
 
     dismissError() {
@@ -57,11 +37,7 @@ export class Login extends Component {
             return this.setState({ error: 'Password is required' });
         }
 
-        axios.post(this.link, {
-            "username": this.state.username,
-            "password": this.state.password
-        }).then(res => (this.obj = Object(res.data)))
-        alert(this.obj.Username);
+        return this.setState({ error: '' });
     }
 
     handleUserChange(evt) {
@@ -82,7 +58,22 @@ export class Login extends Component {
 
         return (
             <div className="Login">
-                {this.getHtml()}
+                <form onSubmit={this.handleSubmit}>
+                    {
+                        this.state.error &&
+                        <h3 data-test="error" onClick={this.dismissError}>
+                            <button onClick={this.dismissError}>✖</button>
+                            {this.state.error}
+                        </h3>
+                    }
+                    <label>User Name</label>
+                    <input type="text" data-test="username" value={this.state.username} onChange={this.handleUserChange} />
+
+                    <label>Password</label>
+                    <input type="password" data-test="password" value={this.state.password} onChange={this.handlePassChange} />
+
+                    <input type="submit" value="Log In" data-test="submit" />
+                </form>
             </div>
         ); 
 
