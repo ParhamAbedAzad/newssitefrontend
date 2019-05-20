@@ -8,7 +8,8 @@ import { Counter } from './components/Counter';
 import { SingleNews } from './components/News';
 import { WholeNews } from './components/WholeNews';
 import { Login } from './components/Login';
-
+import { AddNews } from './components/AddNews';
+import { AdminLogin } from './components/AdminLogin';
 export default class App extends Component {
     static displayName = App.name;
     
@@ -18,6 +19,8 @@ export default class App extends Component {
               <Route exact path='/' component={Home} />
               <Route path='/News/:id' component={WholeNews} />
               <Route path='/Login' component={Login} />
+              <Route path='/AddNews' component={AddNews} />
+              <Route path='/AdminLogin' component={AdminLogin} />
           </Layout >
           
       /*<Layout>
