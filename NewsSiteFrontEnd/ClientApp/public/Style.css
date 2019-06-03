@@ -18,6 +18,10 @@ a {
 .siteText {
     flex: 8;
 }
+.navBarClass {
+    flex: 2;
+    font-family: 'IRANSans';
+}
 
 #siteText:hover {
     color: white;
@@ -25,7 +29,51 @@ a {
     text-shadow: 5px 5px 5px black;
     font-family: 'IRANSans';
 }
+#login {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 60%;
+    height: 85%;
+    font-family: 'IRANSans';
+    border-radius: 5px;
 
+}
+#login2 {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 10%;
+    height: 85%;
+    font-family: 'IRANSans';
+    border-radius: 5px;
+}
+#logout {
+    background-color: red;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 10%;
+    height: 80%;
+    font-family: 'IRANSans';
+    border-radius: 5px;
+}
+
+#logout:hover {
+   opacity:0.8;
+}
+
+#login:hover{
+    opacity:0.8;
+}
 #siteText {
     color: white;
     text-shadow: 2px 2px 2px black;

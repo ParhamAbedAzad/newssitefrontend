@@ -47,7 +47,7 @@ export class AddNews extends Component {
         }
         this.bodyData.text = this.state.text;
         this.bodyData.title = this.state.title;
-        this.config.headers.Authorization = localStorage.getItem("token");
+        this.config.headers.Authorization = "bearer " + localStorage.getItem("token");
         //this.bodyData.set("tags", this.state.tags.split(' '));
         axios.post(this.link, this.bodyData, this.config).catch(this.setState({ error: "submited succecfully" }));
         
@@ -94,7 +94,7 @@ export class AddNews extends Component {
                     <label>Tags</label>
                     <input type="text" data-test={this.state.tags} value={this.state.password} onChange={this.handleTagsChange} />
 
-                    <input type="submit" value="ddNews" data-test="submit" />
+                    <input id="login2" type="submit" value="addNews" data-test="submit" />
                 </form>
             </div>
         ); 

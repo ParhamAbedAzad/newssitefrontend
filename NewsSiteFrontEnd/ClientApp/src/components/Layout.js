@@ -4,7 +4,28 @@ import { NavMenu } from './NavMenu';
 
 export class Layout extends Component {
   static displayName = Layout.name;
+    getHtml() {
+        if (localStorage.getItem("username") != null) {
+            return <form onSubmit={this.handleSubmit}>
+                {
+                    this.state.error &&
+                    <h3 data-test="error" onClick={this.dismissError}>
+                        <button onClick={this.dismissError}>✖</button>
+                        {this.state.error}
+                    </h3>
+                }
+                <label>User Name</label>
+                <input type="text" data-test="username" value={this.state.username} onChange={this.handleUserChange} />
+                <label>Password</label>
+                <input type="password" data-test="password" value={this.state.password} onChange={this.handlePassChange} />
 
+                <input type="submit" value="Log In" data-test="submit" />
+            </form>
+        }
+        else {
+            return <p></p>
+        }
+    }
   render () {
       return (
               <div className="Container">
@@ -13,9 +34,21 @@ export class Layout extends Component {
                       {/* <a href="MyPage.html"><img src="img/SkyNews.png"  alt="Icon" width="200px" height="50px"><a> */}
                       <h1> <a href="./" id="siteText" >بهترین سایت خبری ایران و جهان</a> </h1>
                   </div>
-                  <div className="navBar">
-                      <h3></h3>
 
+                  
+                  <div className="navBarClass">
+                      <h3><a>دسته ها</a></h3>
+                  </div>
+                  <div className="navBarClass">
+                  <h3><a>رادیو WIP</a></h3>
+                  </div>
+                  <div className="navBarClass">
+                      <h3><a>Contact us</a></h3>
+                  </div>
+                  <div className="navBarClass">
+                      <form action="./adminlogin" >
+                          <h3><button type="submit" id="login" >ورود</button ></h3>
+                      </form>
                   </div>
                   <div className="icon">
                       <a href="./"><img src="img/output-onlinepngtools (2).png" alt="Icon" width="200px" height="60px" /></a>

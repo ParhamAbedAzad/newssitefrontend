@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 
 export class AdminLogin extends Component {
-    obj = null;
+    
     link = "https://localhost:44335/Admins/authenticate";
     constructor(props) {
         super(props);
         this.state = {
+            obj: {},
             username: "",
             password: ""
         };
@@ -16,9 +17,13 @@ export class AdminLogin extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.dismissError = this.dismissError.bind(this);
     }
+    logOut() {
+        localStorage.removeItem("token");
+        window.location.href = './adminLogin';
+    }
 
     getHtml() {
-        if (this.obj == null) {
+        if (!localStorage.getItem("token")) {
             return <form onSubmit={this.handleSubmit}>
                 {
                     this.state.error &&
@@ -32,11 +37,11 @@ export class AdminLogin extends Component {
                 <label>Password</label>
                 <input type="password" data-test="password" value={this.state.password} onChange={this.handlePassChange} />
 
-                <input type="submit" value="Log In" data-test="submit" />
+                <input type="submit" id="login2" value="Log In" data-test="submit" />
             </form>
         }
         else {
-            return <p>you are signed in</p>
+            return <p>you are signed in <button id="logout" onClick={this.logOut}>logout</button><br></br><button id="login2" onClick="window.location.href = './addNews';">add News</button></p>
         }
     }
 
@@ -57,8 +62,14 @@ export class AdminLogin extends Component {
         axios.post(this.link, {
             "username": this.state.username,
             "password": this.state.password
-        }).then(res => (this.obj = Object(res.data)))
-        alert(this.obj.Username);
+        }).then(res => {
+            this.setState({ obj: Object(res.data) })
+            localStorage.setItem("token", Object(this.state.obj).token)
+            }).catch((e) => (alert("wrong U/P")));
+        // axios.post(this.link, this.bodyData, this.config).catch(this.setState({ error: "submited succecfully" }));
+        
+        
+
     }
 
     handleUserChange(evt) {
@@ -75,23 +86,9 @@ export class AdminLogin extends Component {
 
     render() {
         return (
-            <section id="login">
-                <div className="login_box">
-                    <form className="login_form" action={this.handleSubmit}>
-                        <div className="input_box">
-                            <i className="icon fas fa-user"></i><input className="input_field" type="text" placeholder="exp. jhon" name="email" />
-                        </div>
-                        <div className="input_box">
-                            <i className="icon fas fa-lock"></i><input className="input_field" type="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" name="password" />
-                        </div>
-                        <div className="forgot_pw">
-                            <a href="#">کلمه عبور را فراموش کرده اید؟</a>
-                        </div>
-                        <button className="submit_btn" type="submit">ورود</button>
-                        <a className="signup_btn" href="./SignUp">ثبت نام</a>
-                    </form>
-                </div>
-            </section>
+            <div className="Login">
+                {this.getHtml()}
+            </div>
         );
     }
 }

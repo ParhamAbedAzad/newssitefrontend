@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 
 export class Login extends Component {
-    obj = null;
+
     link = "https://localhost:44335/Users/authenticate";
     constructor(props) {
         super(props);
         this.state = {
+            obj: {},
             username: "",
             password: ""
         };
@@ -16,9 +17,10 @@ export class Login extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.dismissError = this.dismissError.bind(this);
     }
+    b = false;
 
     getHtml() {
-        if (this.obj == null) {
+        if (Object(this.state.obj).id == null) {
             return <form onSubmit={this.handleSubmit}>
                 {
                     this.state.error &&
@@ -36,7 +38,7 @@ export class Login extends Component {
             </form>
         }
         else {
-            return <p>you are signed in</p>
+            return <p>you are signed in as {Object(this.state.obj).username}</p>
         }
     }
 
@@ -53,12 +55,27 @@ export class Login extends Component {
         if (!this.state.password) {
             return this.setState({ error: 'Password is required' });
         }
-
+        this.b = false;
+        return alert("wrong user or pass");
         axios.post(this.link, {
             "username": this.state.username,
             "password": this.state.password
-        }).then(res => (this.obj = Object(res.data)))
-        alert(this.obj.Username);
+        }).then(res => {
+            this.b = true;
+            this.setState({ obj: Object(res.data) })
+            localStorage.setItem("token", Object(this.state.obj).token)
+            localStorage.setItem("username", Object(this.state.obj).username)
+            localStorage.setItem("userlogin", Object(this.state.obj))
+
+
+        }).catch();
+        if (!this.b) {
+            alert("wrong user or pass");
+        }
+        // axios.post(this.link, this.bodyData, this.config).catch(this.setState({ error: "submited succecfully" }));
+
+
+
     }
 
     handleUserChange(evt) {
@@ -75,23 +92,9 @@ export class Login extends Component {
 
     render() {
         return (
-            <section id="login">
-                <div className="login_box">
-                    <form className="login_form" action="">
-                        <div className="input_box">
-                            <i className="icon fas fa-user"></i><input className="input_field" type="text" placeholder="yourname@gmail.com" name="email" />
-                        </div>
-                        <div className="input_box">
-                            <i className="icon fas fa-lock"></i><input className="input_field" type="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" name="password" />
-                        </div>
-                        <div className="forgot_pw">
-                            <a href="#">کلمه عبور را فراموش کرده اید؟</a>
-                        </div>
-                        <button className="submit_btn" type="submit">ورود</button>
-                        <a className="signup_btn" href="./SignUp">ثبت نام</a>
-                    </form>
-                </div>
-            </section>
+            <div className="Login">
+                {this.getHtml()}
+            </div>
         );
     }
 }
