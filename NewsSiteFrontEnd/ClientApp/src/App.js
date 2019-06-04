@@ -10,6 +10,7 @@ import { WholeNews } from './components/WholeNews';
 import { Login } from './components/Login';
 import { AddNews } from './components/AddNews';
 import { AdminLogin } from './components/AdminLogin';
+import { SignUp } from './components/SignUp';
 export default class App extends Component {
     static displayName = App.name;
     
@@ -21,6 +22,7 @@ export default class App extends Component {
               <Route path='/Login' component={Login} />
               <Route path='/AddNews' component={AddNews} />
               <Route path='/AdminLogin' component={AdminLogin} />
+              <Route path='/SignUp' component={SignUp} />
           </Layout >
           
       /*<Layout>
