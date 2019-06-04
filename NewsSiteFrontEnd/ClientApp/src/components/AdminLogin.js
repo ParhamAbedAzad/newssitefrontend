@@ -67,7 +67,7 @@ export class AdminLogin extends Component {
             sessionStorage.setItem("token", Object(this.state.obj).token)
             }).catch((e) => (alert("wrong U/P")));
         // axios.post(this.link, this.bodyData, this.config).catch(this.setState({ error: "submited succecfully" }));
-        
+        window.location.reload();
         
 
     }
