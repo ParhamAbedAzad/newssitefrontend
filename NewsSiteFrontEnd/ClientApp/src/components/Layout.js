@@ -3,9 +3,11 @@ import { Container } from 'reactstrap';
 import { NavMenu } from './NavMenu';
 
 export class Layout extends Component {
-  static displayName = Layout.name;
+    static displayName = Layout.name;
+
     getHtml() {
-        if (localStorage.getItem("username") != null) {
+        if (sessionStorage.getItem("username") != null) {
+            
             return <form onSubmit={this.handleSubmit}>
                 {
                     this.state.error &&
@@ -37,13 +39,13 @@ export class Layout extends Component {
 
                   
                   <div className="navBarClass">
-                      <h3><a>دسته ها</a></h3>
+                      <h3><a id="nav">دسته ها</a></h3>
                   </div>
                   <div className="navBarClass">
-                  <h3><a>رادیو WIP</a></h3>
+                      <h3><a id="nav" href="https://localhost:44335/radio">رادیو WIP</a></h3>
                   </div>
                   <div className="navBarClass">
-                      <h3><a>Contact us</a></h3>
+                      <h3><a id="nav">Contact us</a></h3>
                   </div>
                   <div className="navBarClass">
                       <form action="./adminlogin" >

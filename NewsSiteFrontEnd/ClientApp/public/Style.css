@@ -10,38 +10,59 @@ h2 {
     /*text-decoration: underline;*/
 }
 
+#nav {
+    color: aqua;
+}
+    #nav:hover {
+        color: white;
+        text-shadow: 1px 1px 2px white, 0 0 1em white, 0 0 0.2em aqua;
+    }
+.navBarClass {
+    color: aqua;
+    flex: 2;
+    font-family: 'IRANSans';
+}
+    .navBarClass:hover {
+        color: white;
+        text-shadow: 1px 1px 2px white, 0 0 1em white, 0 0 0.2em aqua;
+    }
+
 a {
     text-decoration: none;
-    color: black;
+    color: aqua;
 }
 
 .siteText {
     flex: 8;
 }
-.navBarClass {
-    flex: 2;
-    font-family: 'IRANSans';
-}
+
+
 
 #siteText:hover {
     color: white;
-    text-shadow: 1px 1px 2px white, 0 0 1em white, 0 0 0.2em white;
-    text-shadow: 5px 5px 5px black;
+    text-shadow: 1px 1px 2px white, 0 0 1em white, 0 0 0.2em aqua;
+    /*text-shadow: 5px 5px 5px, 0px 5px 5px, 3px 5px 5px,5px 5px 5pxaqua;*/
     font-family: 'IRANSans';
 }
+
 #login {
-    background-color: #4CAF50;
-    color: white;
+    background-color: transparent;
+    color: aqua;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    width: 60%;
-    height: 85%;
     font-family: 'IRANSans';
-    border-radius: 5px;
-
+    font-size: 1.20em;
+    font-weight:500;
 }
+
+    #login:hover {
+        text-shadow: 1px 1px 2px white, 0 0 1em aqua, 0 0 0.2em white;
+        background-color: transparent;
+        color: white;
+    }
+
 #login2 {
     background-color: #4CAF50;
     color: white;
@@ -54,6 +75,7 @@ a {
     font-family: 'IRANSans';
     border-radius: 5px;
 }
+
 #logout {
     background-color: red;
     color: white;
@@ -67,13 +89,14 @@ a {
     border-radius: 5px;
 }
 
-#logout:hover {
-   opacity:0.8;
+    #logout:hover {
+        opacity: 0.8;
+    }
+
+#login:hover {
+    opacity: 0.8;
 }
 
-#login:hover{
-    opacity:0.8;
-}
 #siteText {
     color: white;
     text-shadow: 2px 2px 2px black;
@@ -134,16 +157,16 @@ a:hover {
     flex: 1.2;
     margin-top: 1em;
 }
+
 .singleNews {
     border-bottom: solid #373737 1px;
-
-
 }
-.singleNews h2 {
-    margin-bottom: 0;
-    padding-bottom: 0;
-    line-height: 1em;
-}
+
+    .singleNews h2 {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        line-height: 1em;
+    }
 
 
 .Container header {
@@ -151,7 +174,7 @@ a:hover {
     padding-top: 2px;
     padding-right: 20px;
     display: flex;
-    background-color: #373737;
+    background-color: #1a1a1a;
     align-items: center;
     color: inherit;
 }
@@ -182,7 +205,7 @@ a:hover {
 
 .icon {
     flex: 1;
-    border-radius: 25px;
+
 }
 
 

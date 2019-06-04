@@ -47,7 +47,7 @@ export class AddNews extends Component {
         }
         this.bodyData.text = this.state.text;
         this.bodyData.title = this.state.title;
-        this.config.headers.Authorization = "bearer " + localStorage.getItem("token");
+        this.config.headers.Authorization = "bearer " + sessionStorage.getItem("token");
         //this.bodyData.set("tags", this.state.tags.split(' '));
         axios.post(this.link, this.bodyData, this.config).catch(this.setState({ error: "submited succecfully" }));
         

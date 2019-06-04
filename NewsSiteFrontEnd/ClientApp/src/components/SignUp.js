@@ -3,24 +3,25 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 
 export class AdminLogin extends Component {
-    
-    link = "https://localhost:44335/Admins/authenticate";
+
+    link = "https://localhost:44335/Users/register";
     constructor(props) {
         super(props);
         this.state = {
             obj: {},
             username: "",
-            password: ""
+            password: "",
+            firstname: "",
+            lastname: "",
+            email: "",
+            tellnumber: ""
         };
         this.handlePassChange = this.handlePassChange.bind(this);
         this.handleUserChange = this.handleUserChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.dismissError = this.dismissError.bind(this);
     }
-    logOut() {
-        sessionStorage.removeItem("token");
-        window.location.href = './adminLogin';
-    }
+    
 
     getHtml() {
         if (!sessionStorage.getItem("token")) {
@@ -33,9 +34,9 @@ export class AdminLogin extends Component {
                     </h3>
                 }
                 <label>User Name</label>
-                <input type="text" data-test="username" value={this.state.username} onChange={this.handleUserChange} /><br></br>
+                <input type="text" data-test="username" value={this.state.username} onChange={this.handleUserChange} />
                 <label>Password</label>
-                <input type="password" data-test="password" value={this.state.password} onChange={this.handlePassChange} /><br></br>
+                <input type="password" data-test="password" value={this.state.password} onChange={this.handlePassChange} />
 
                 <input type="submit" id="login2" value="Log In" data-test="submit" />
             </form>
@@ -65,10 +66,10 @@ export class AdminLogin extends Component {
         }).then(res => {
             this.setState({ obj: Object(res.data) })
             sessionStorage.setItem("token", Object(this.state.obj).token)
-            }).catch((e) => (alert("wrong U/P")));
+        }).catch((e) => (alert("wrong U/P")));
         // axios.post(this.link, this.bodyData, this.config).catch(this.setState({ error: "submited succecfully" }));
-        
-        
+
+
 
     }
 

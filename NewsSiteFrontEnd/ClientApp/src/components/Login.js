@@ -30,11 +30,11 @@ export class Login extends Component {
                     </h3>
                 }
                 <label>User Name</label>
-                <input type="text" data-test="username" value={this.state.username} onChange={this.handleUserChange} />
+                <input type="text" data-test="username" value={this.state.username} onChange={this.handleUserChange} /><br></br>
                 <label>Password</label>
-                <input type="password" data-test="password" value={this.state.password} onChange={this.handlePassChange} />
+                <input type="password" data-test="password" value={this.state.password} onChange={this.handlePassChange} /><br></br>
 
-                <input type="submit" value="Log In" data-test="submit" />
+                <input id="login2" type="submit" value="Log In" data-test="submit" />
             </form>
         }
         else {
@@ -63,9 +63,9 @@ export class Login extends Component {
         }).then(res => {
             this.b = true;
             this.setState({ obj: Object(res.data) })
-            localStorage.setItem("token", Object(this.state.obj).token)
-            localStorage.setItem("username", Object(this.state.obj).username)
-            localStorage.setItem("userlogin", Object(this.state.obj))
+            sessionStorage.setItem("token", Object(this.state.obj).token)
+            sessionStorage.setItem("username", Object(this.state.obj).username)
+            sessionStorage.setItem("userlogin", Object(this.state.obj))
 
 
         }).catch();
