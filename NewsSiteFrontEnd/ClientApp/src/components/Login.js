@@ -64,7 +64,6 @@ export class Login extends Component {
             return this.setState({ error: 'Password is required' });
         }
         this.b = false;
-        return alert("wrong user or pass");
         axios.post(this.link, {
             "username": this.state.username,
             "password": this.state.password
@@ -78,7 +77,8 @@ export class Login extends Component {
 
         }).catch();
         if (!this.b) {
-            alert("wrong user or pass");
+            var s = this.state.username + "  " + this.state.password
+            alert(this.state.username + "  " + this.state.password);
         }
         // axios.post(this.link, this.bodyData, this.config).catch(this.setState({ error: "submited succecfully" }));
 
@@ -118,7 +118,7 @@ export class Login extends Component {
 
                                 <input type="submit" value="Log In" data-test="submit" />
                             </form>
-                            <div class="cta"><a href="./index.html">حساب کاربری ندارید ؟ کلیک کنید</a></div>
+                            <div class="cta"><a href="./signup">حساب کاربری ندارید ؟ کلیک کنید</a></div>
                         </div>
                     </div>
                 </div>

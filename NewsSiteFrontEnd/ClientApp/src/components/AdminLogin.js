@@ -64,21 +64,20 @@ export class AdminLogin extends Component {
             return this.setState({ error: 'Password is required' });
         }
         this.b = false;
-        return alert("wrong user or pass");
         axios.post(this.link, {
             "username": this.state.username,
             "password": this.state.password
         }).then(res => {
             this.b = true;
             this.setState({ obj: Object(res.data) })
-            localStorage.setItem("token", Object(this.state.obj).token)
-            localStorage.setItem("username", Object(this.state.obj).username)
-            localStorage.setItem("userlogin", Object(this.state.obj))
+            sessionStorage.setItem("token", Object(this.state.obj).token)
+            sessionStorage.setItem("username", Object(this.state.obj).username)
+            sessionStorage.setItem("userlogin", Object(this.state.obj))
 
 
         }).catch();
         if (!this.b) {
-            alert("wrong user or pass");
+            alert(this.state.username + "  " + this.state.password);
         }
         // axios.post(this.link, this.bodyData, this.config).catch(this.setState({ error: "submited succecfully" }));
 
