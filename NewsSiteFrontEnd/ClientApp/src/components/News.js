@@ -13,7 +13,7 @@ export class SingleNews extends Component {
     var resultStr = "";
     resultStr = str;
     return str;
-}
+    } 
     
 
     /*componentWillMount() {
@@ -27,7 +27,7 @@ export class SingleNews extends Component {
     
     render() {
         return (
-            <div className="singleNews">
+            /*<div className="singleNews">
                 <div className="textandpic">
                     <div className="texts">
                         <a href={"./news/" + this.props.new.id}><h2>{this.props.new.title}</h2></a>
@@ -35,7 +35,16 @@ export class SingleNews extends Component {
                     </div>
                     <img src={'/img/' + this.props.new.id + '.jpg'} alt="titleIMG" width="200em" height="180em" />
                 </div>
-            </div>
+            </div>*/
+            <div class="news-center">
+                <a href="#"><img src={'/img/' + this.props.new.id + '.jpg'} alt="titleIMG" width="200em" height="180em" /></a>
+                <p><span>{this.props.new.title}</span>{String(this.props.new.text).split(' ').slice(0, 40).join(' ')}</p>
+                <div style={{ clear: 'both' }}>
+                    <div class="btn-more" style={{/*! background: '#ccc'*/}}>
+                        <a href={"./news/" + this.props.new.id} class="btn--more">ادامه خبر</a>
+                            <div></div></div>
+                    </div>
+				</div>
         );
     }
 }

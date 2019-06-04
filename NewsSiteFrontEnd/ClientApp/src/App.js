@@ -1,5 +1,4 @@
 ﻿import React, { Component } from 'react';
-import './components/Style.css';
 import { Route } from 'react-router';
 import { Layout } from './components/Layout';
 import { Home } from './components/Home';
@@ -8,16 +7,21 @@ import { Counter } from './components/Counter';
 import { SingleNews } from './components/News';
 import { WholeNews } from './components/WholeNews';
 import { Login } from './components/Login';
+import { AdminLogin } from './components/AdminLogin';
 
 export default class App extends Component {
     static displayName = App.name;
     
     render() {
-      return (
-         <Layout>
-              <Route exact path='/' component={Home} />
-              <Route path='/News/:id' component={WholeNews} />
-              <Route path='/Login' component={Login} />
+        return (
+            <Layout>
+                
+                <Route exact path='/' component={Home} />
+                <Route exact path='/index' component={Home} />
+                <Route path='/News/:id' component={WholeNews} />
+                <Route path='/Login' component={Login} />
+                <Route path='/AdminLogin' component={AdminLogin} />
+
           </Layout >
           
       /*<Layout>

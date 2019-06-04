@@ -1,9 +1,9 @@
 ﻿import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-export class Login extends Component {
+export class AdminLogin extends Component {
 
-    link = "https://localhost:44335/Users/authenticate";
+    link = "https://localhost:44335/Admins/authenticate";
     constructor(props) {
         super(props);
         this.state = {
@@ -26,19 +26,19 @@ export class Login extends Component {
                     <div class="module form-module">
                         <div className="form">
                             <h2>ورود به حساب خود</h2>
-                                <form onSubmit={this.handleSubmit}>
-                                    {
-                                        this.state.error &&
-                                        <h3 data-test="error" onClick={this.dismissError}>
-                                            <button onClick={this.dismissError}>✖</button>
-                                            {this.state.error}
-                                        </h3>
-                                    }
-                                    <input type="text" data-test="username" value={this.state.username} onChange={this.handleUserChange} />
-                                    <input type="password" data-test="password" value={this.state.password} onChange={this.handlePassChange} />
+                            <form onSubmit={this.handleSubmit}>
+                                {
+                                    this.state.error &&
+                                    <h3 data-test="error" onClick={this.dismissError}>
+                                        <button onClick={this.dismissError}>✖</button>
+                                        {this.state.error}
+                                    </h3>
+                                }
+                                <input type="text" data-test="username" value={this.state.username} onChange={this.handleUserChange} />
+                                <input type="password" data-test="password" value={this.state.password} onChange={this.handlePassChange} />
 
-                                    <input type="submit" value="Log In" data-test="submit" />
-                                </form>
+                                <input type="submit" value="Log In" data-test="submit" />
+                            </form>
                             <div class="cta"><a href="./index.html">حساب کاربری ندارید ؟ کلیک کنید</a></div>
                         </div>
                     </div>
@@ -71,9 +71,9 @@ export class Login extends Component {
         }).then(res => {
             this.b = true;
             this.setState({ obj: Object(res.data) })
-            sessionStorage.setItem("token", Object(this.state.obj).token)
-            sessionStorage.setItem("username", Object(this.state.obj).username)
-            sessionStorage.setItem("userlogin", Object(this.state.obj))
+            localStorage.setItem("token", Object(this.state.obj).token)
+            localStorage.setItem("username", Object(this.state.obj).username)
+            localStorage.setItem("userlogin", Object(this.state.obj))
 
 
         }).catch();
