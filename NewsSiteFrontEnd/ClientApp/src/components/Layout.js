@@ -51,13 +51,14 @@ export class Layout extends Component {
                         <div id="khaje-menu">
                             <ul>
                                 <li><a href="index" id="case1">صفحه نخست</a></li>
+                                <li><a href="/radio" >رادیو</a></li>
                                 <li><a href="/contact">تماس با ما</a></li>
                                 <li><a href="#">درباره ما</a></li>
                                 {this.getHtml()}
                             </ul>
                         </div>
                         <div id="khaje-search">
-                            <h6>{(sessionStorage.getItem("token") == null) ? "" : "شما با اسم" + " " + sessionStorage.getItem("username") + " " + "وارد شده اید "}</h6>
+                            <h6>{(sessionStorage.getItem("token") == null) ? "" : "" + " (" + sessionStorage.getItem("username") + ") " + "عزیز خوش آمدید "}</h6>
                         </div>
                     </div>
                     <div style={{ clear: 'both' }}>

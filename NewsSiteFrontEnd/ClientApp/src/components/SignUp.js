@@ -42,23 +42,23 @@ export class SignUp extends Component {
                                 <form onSubmit={this.handleSubmit}>
                                     {
                                         this.state.error &&
-                                        <h3 data-test="error" onClick={this.dismissError}>
+                                        <h3  data-test="error" onClick={this.dismissError}>
                                             <button onClick={this.dismissError}>✖</button>
-                                            {this.state.error}
+                                            <p id="err">{this.state.error}</p>
                                         </h3>
                                     }
 
-                                    <label>UserName *</label>
+                                    <label>* UserName</label>
                                     <input type="text" data-test="username" value={this.state.username} onChange={this.handleUserChange} placeholder="نام کاربری" /><br></br>
-                                    <label>Password *</label>
+                                    <label>* Password</label>
                                     <input type="password" data-test="password" value={this.state.password} onChange={this.handlePassChange} placeholder="رمز عبور" /><br></br>
-                                    <label>Repeat Password *</label>
+                                    <label>* Repeat Password</label>
                                     <input type="password" data-test="passwordrepeat" value={this.state.passwordrepeat} onChange={this.handlePassrepChange} placeholder="تکرار رمز عبور" /><br></br>
                                     <label>First Name</label>
                                     <input type="text" data-test="firstname" value={this.state.firstname} onChange={this.handleFnameChange} placeholder="نام" /><br></br>
                                     <label>Last Name</label>
                                     <input type="text" data-test="lastname" value={this.state.lastname} onChange={this.handleLnameChange} placeholder="نام خانوادگی" /><br></br>
-                                    <label>Email address *</label>
+                                    <label>* Email address</label>
                                     <input type="text" data-test="email" value={this.state.email} onChange={this.handleEmailChange} placeholder="ایمیل" /><br></br>
                                     <label>Tell Number</label>
                                     <input type="text" data-test="tellnumber" value={this.state.tellnumber} onChange={this.handleTellNumChange} placeholder="شماره تلفن" /><br></br>
@@ -85,23 +85,25 @@ export class SignUp extends Component {
     handleSubmit(evt) {
         evt.preventDefault();
         if (!this.state.username) {
-            return this.setState({ error: 'Username is required' });
+            return this.setState({ error: '* Username is required' });
         }
         if (!this.state.password) {
-            return this.setState({ error: 'password is required' });
+            return this.setState({ error: '* password is required' });
         }
         if (!this.state.passwordrepeat) {
-            return this.setState({ error: 'repeat password is required' });
+            return this.setState({ error: '* repeat password is required' });
         }
         if (!this.state.email) {
-            return this.setState({ error: 'email is required' });
+            return this.setState({ error: '* email is required' });
         }
 
         if (this.state.passwordrepeat != this.state.password) {
-            return this.setState({ error: 'entered passwords do not match' });
+            return this.setState({ error: '* entered passwords do not match' });
         }
-
-
+        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if (!re.test(this.state.email)) {
+            return this.setState({ error: 'wrong email format' });
+        }
         axios.post(this.link, {
             "username": this.state.username,
             "password": this.state.password,
@@ -116,7 +118,7 @@ export class SignUp extends Component {
             window.location.reload();
         }).catch(function (error) {
             if (error.response) {
-                alert(error.response.data);
+                alert(JSON.stringify(error.response.data));
                 // alert(JSON.stringify(error.response));
             }
         });

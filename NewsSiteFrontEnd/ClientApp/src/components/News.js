@@ -37,7 +37,7 @@ export class SingleNews extends Component {
                 </div>
             </div>*/
             <div class="news-center">
-                <a href="#"><img src={'/img/' + this.props.new.id + '.jpg'} alt="titleIMG" width="200em" height="180em" /></a>
+                <a href={"./news/" + this.props.new.id}><img src={'/img/' + this.props.new.id + '.jpg'} alt="titleIMG" width="200em" height="180em" /></a>
                 <p><span>{this.props.new.title}</span>{String(this.props.new.text).split(' ').slice(0, 40).join(' ')}</p>
                 <div style={{ clear: 'both' }}>
                     <div class="btn-more" style={{/*! background: '#ccc'*/}}>
