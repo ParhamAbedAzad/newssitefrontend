@@ -53,7 +53,7 @@ export class Layout extends Component {
                                 <li><a href="index" id="case1">صفحه نخست</a></li>
                                 <li><a href="/radio" >رادیو</a></li>
                                 <li><a href="/contact">تماس با ما</a></li>
-                                <li><a href="#">درباره ما</a></li>
+                                <li><a href="/about">درباره ما</a></li>
                                 {this.getHtml()}
                             </ul>
                         </div>

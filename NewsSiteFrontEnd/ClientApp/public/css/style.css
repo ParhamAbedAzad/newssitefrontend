@@ -40,27 +40,52 @@ p, h1, h2, h3, h4, h5, h6 {
     margin: 0;
     padding: 0;
 }
-#err{
-    color:red;
+#aboutus{
+    font-size:15px;
+    padding-left :15px;
+    text-align:left;
 }
+#aboutusfa {
+    font-size: 15px;
+    padding-left: 15px;
+    text-align: right;
+}
+#mairu {
+    font-size: 20px;
+    text-align: left;
+    padding-left: 20px;
+    color: black;
+}
+
+    #mairu:hover {
+        text-decoration:underline;
+    }
+
+#err {
+    color: red;
+}
+
 #contact {
+    color: #1e69de;
     font-size: 20px;
     font-weight: 200;
 }
 
 #contact-list {
-    font-size:18px;
+    padding: 15px;
+    font-size: 18px;
     text-align: center;
     list-style: none;
     font-weight: 800;
 }
+
     #contact-list:hover {
         text-decoration: none;
     }
-    #contact-list-discord:hover {
-        
-        color: #7289da;
-    }
+
+#contact-list-discord:hover {
+    color: #7289da;
+}
 
 #contact-list-insta:hover {
     color: #cd486b;

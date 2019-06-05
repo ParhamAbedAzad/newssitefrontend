@@ -72,7 +72,7 @@ export class SignUp extends Component {
         }
         else {
             sessionStorage.removeItem("success");
-            return (<p>successfully signed up <a>login</a> now!</p>
+            return (<p>successfully signed up <a href="/login">login</a> now!</p>
             );
 
         }
