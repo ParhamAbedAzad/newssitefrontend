@@ -3,7 +3,7 @@ import { Route } from 'react-router';
 import { Layout } from './components/Layout';
 import { Home } from './components/Home';
 import { FetchData } from './components/FetchData';
-import { Counter } from './components/Counter';
+import { Counter, Contact } from './components/Contact';
 import { SingleNews } from './components/News';
 import { WholeNews } from './components/WholeNews';
 import { Login } from './components/Login';
@@ -20,8 +20,9 @@ export default class App extends Component {
                 <Route exact path='/index' component={Home} />
                 <Route path='/News/:id' component={WholeNews} />
                 <Route path='/Login' component={Login} />
-                <Route path='/AdminLogin' component={AdminLogin} />
+                <Route path='/Admin' component={AdminLogin} />
                 <Route path='/signup' component={SignUp} />
+                <Route path='/contact' component={Contact} />
           </Layout >
           
       /*<Layout>

@@ -51,7 +51,7 @@ export class Layout extends Component {
                         <div id="khaje-menu">
                             <ul>
                                 <li><a href="index" id="case1">صفحه نخست</a></li>
-                                <li><a href="contact">تماس با ما</a></li>
+                                <li><a href="/contact">تماس با ما</a></li>
                                 <li><a href="#">درباره ما</a></li>
                                 {this.getHtml()}
                             </ul>
@@ -79,7 +79,7 @@ export class Layout extends Component {
                                         <h3>عضویت در خبرنامه</h3>
                                         <span>دریافت آخرین اخبار روز دنیا با عضویت در خبرنامه خواجه نصیر طوسی :</span>
                                         <form action>
-                                            <input className="txt-register" type="text" onfocus="if(this.value=='Email Address') this.value='';" onblur="if(this.value=='') this.value='Email Address';" defaultValue="Email Address" />
+                                            <input className="txt-register" type="text" onfocus="if(this.value=='Email Address'){ this.value=''};" onblur="if(this.value=='') this.value='Email Address';" defaultValue="Email Address" />
                                             <input className="btn-register" type="button" defaultValue="ثبت" />
                                         </form>
                                         <p><a href="#">یا میتوانید از طریق فید خبری اخبار ما را دنبال کنید.</a></p>
@@ -108,8 +108,8 @@ export class Layout extends Component {
                                     <div className="license">
                                         <a rel="license" href="#" />
                                         <span />
-                                        <a href="#">KHAJE.N TOOSI STUDENT NEWS CLUB</a> <span>&nbsp;IS LINCENSED UNDER a&nbsp;</span>
-                                        <a rel="license" href="#">K.N UNIVERSITY</a>
+                                        <a href="/">KHAJE.N TOOSI STUDENT NEWS CLUB</a> <span>&nbsp;IS UNLINCENSED UNDER &nbsp;</span>
+                                        <a rel="license" href="https://www.kntu.ac.ir/">K.N UNIVERSITY</a>
                                         <a href="#" />
                                     </div>
                                 </div>
