@@ -3,13 +3,11 @@ body {
     padding: 0;
     margin: 0;
 }
-
 h2 {
     font-family: 'IRANSans';
     font-size: 35px;
     /*text-decoration: underline;*/
 }
-
 a {
     text-decoration: none;
     color: black;

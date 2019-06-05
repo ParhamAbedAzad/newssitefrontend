@@ -8,7 +8,7 @@ import { SingleNews } from './components/News';
 import { WholeNews } from './components/WholeNews';
 import { Login } from './components/Login';
 import { AdminLogin } from './components/AdminLogin';
-
+import { SignUp } from './components/SignUp';
 export default class App extends Component {
     static displayName = App.name;
     
@@ -21,7 +21,7 @@ export default class App extends Component {
                 <Route path='/News/:id' component={WholeNews} />
                 <Route path='/Login' component={Login} />
                 <Route path='/AdminLogin' component={AdminLogin} />
-
+                <Route path='/signup' component={SignUp} />
           </Layout >
           
       /*<Layout>

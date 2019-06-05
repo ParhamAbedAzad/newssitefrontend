@@ -19,13 +19,13 @@ export class Login extends Component {
     b = false;
 
     getHtml() {
-        if (Object(this.state.obj).id == null) {
-            return
-            <div id="khaje-content-left">
-                <div id="khaje-content-main">
-                    <div class="module form-module">
-                        <div className="form">
-                            <h2>ورود به حساب خود</h2>
+        if (sessionStorage.getItem("token") == null) {
+            return (
+                <div id="khaje-content-left">
+                    <div id="khaje-content-main">
+                        <div class="module form-module">
+                            <div className="form">
+                                <h2>ورود به حساب خود</h2>
                                 <form onSubmit={this.handleSubmit}>
                                     {
                                         this.state.error &&
@@ -34,19 +34,19 @@ export class Login extends Component {
                                             {this.state.error}
                                         </h3>
                                     }
-                                    <input type="text" data-test="username" value={this.state.username} onChange={this.handleUserChange} />
-                                    <input type="password" data-test="password" value={this.state.password} onChange={this.handlePassChange} />
+                                    <input type="text" data-test="username" value={this.state.username} onChange={this.handleUserChange} placeholder="نام کاربری" />
+                                    <input type="password" data-test="password" value={this.state.password} onChange={this.handlePassChange} placeholder="رمز عبور" />
 
                                     <input type="submit" value="Log In" data-test="submit" />
                                 </form>
-                            <div class="cta"><a href="./index.html">حساب کاربری ندارید ؟ کلیک کنید</a></div>
+                                <div class="cta"><a href="./signup">حساب کاربری ندارید ؟ کلیک کنید</a></div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                </div>);
         }
         else {
-            return <p>you are signed in as {Object(this.state.obj).username}</p>
+            return <p>you are signed in as {sessionStorage.getItem("username")}</p>
         }
     }
 
@@ -73,13 +73,18 @@ export class Login extends Component {
             sessionStorage.setItem("token", Object(this.state.obj).token)
             sessionStorage.setItem("username", Object(this.state.obj).username)
             sessionStorage.setItem("userlogin", Object(this.state.obj))
+            window.location.href = "/";
+        }).catch(function (error) {
+            if (error.response) {
 
-
-        }).catch();
-        if (!this.b) {
+                alert(error.response.data.message);
+                // alert(JSON.stringify(error.response));
+            }
+        });
+        /*if (!this.b) {
             var s = this.state.username + "  " + this.state.password
             alert(this.state.username + "  " + this.state.password);
-        }
+        }*/
         // axios.post(this.link, this.bodyData, this.config).catch(this.setState({ error: "submited succecfully" }));
 
 
@@ -100,28 +105,8 @@ export class Login extends Component {
 
     render() {
         return (
-            <div id="khaje-content-left">
-                <div id="khaje-content-main">
-                    <div class="module form-module">
-                        <div className="form">
-                            <h2>ورود به حساب خود</h2>
-                            <form onSubmit={this.handleSubmit}>
-                                {
-                                    this.state.error &&
-                                    <h3 data-test="error" onClick={this.dismissError}>
-                                        <button onClick={this.dismissError}>✖</button>
-                                        {this.state.error}
-                                    </h3>
-                                }
-                                <input type="text" data-test="username" value={this.state.username} onChange={this.handleUserChange} placeholder="نام کاربری" />
-                                <input type="password" data-test="password" value={this.state.password} onChange={this.handlePassChange} placeholder="رمز عبور" />
-
-                                <input type="submit" value="Log In" data-test="submit" />
-                            </form>
-                            <div class="cta"><a href="./signup">حساب کاربری ندارید ؟ کلیک کنید</a></div>
-                        </div>
-                    </div>
-                </div>
+            <div >
+                {this.getHtml()}
             </div>
         );
     }

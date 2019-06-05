@@ -25,7 +25,7 @@ export class AdminLogin extends Component {
                 <div id="khaje-content-main">
                     <div class="module form-module">
                         <div className="form">
-                            <h2>ورود به حساب خود</h2>
+                            <h2>ورود به حساب مدیریت</h2>
                             <form onSubmit={this.handleSubmit}>
                                 {
                                     this.state.error &&
@@ -103,7 +103,7 @@ export class AdminLogin extends Component {
                 <div id="khaje-content-main">
                     <div class="module form-module">
                         <div className="form">
-                            <h2>ورود به حساب خود</h2>
+                            <h2>ورود به حساب مدیریت</h2>
                             <form onSubmit={this.handleSubmit}>
                                 {
                                     this.state.error &&

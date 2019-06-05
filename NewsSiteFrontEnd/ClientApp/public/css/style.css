@@ -43,7 +43,12 @@ p,h1,h2,h3,h4,h5,h6{
 	margin:0;
 	padding:0;
 }
-
+#notice{
+    text-align: right
+}
+label {
+    text-align: left;
+}
 a {
 	text-decoration:none;
 	color:#000;
