@@ -1,18 +1,34 @@
 ﻿import React, { Component } from 'react';
 import { Container } from 'reactstrap';
 import { NavMenu } from './NavMenu';
-
+import axios from 'axios';
 export class Layout extends Component {
-  static displayName = Layout.name;
+    static displayName = Layout.name;
+    signOut() {
+        alert("done");
+        sessionStorage.clear();
+    }
+    link = "https://localhost:44335/news/1/6";
+    new = [];
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            newsArr: [{}]
+        };
+    }
+    componentWillMount() {
+        axios.get(this.link).then(res => this.setState({ newsArr: res.data }));
+    }
     getHtml() {
         if (sessionStorage.getItem("token") == null) {
-            return <div><li><a href="#">ورود</a></li>
+            return <div><li><a href="./login">ورود</a></li>
                 <li><a href="signup">ثبت نام</a></li>
             </div>
         }
 
         else {
-                return <div><li><a href="#">خروج</a></li>
+            return <div><li><a href="#" onClick={() => this.signOut()}>خروج</a></li>
                 <li><a href="login">صفحه شما</a></li>
             </div >}
     }
@@ -39,8 +55,8 @@ export class Layout extends Component {
                 {this.getHtml()}
               </ul>
             </div>
-            <div id="khaje-search">
-                <h6>شما با اسم username وارد شده اید</h6>
+                      <div id="khaje-search">
+                          <h6>{(sessionStorage.getItem("token") == null) ? "" : "شما با اسم" + " " + sessionStorage.getItem("username") + " " + "وارد شده اید "}</h6>
             </div>
           </div>
           <div style={{clear: 'both'}}>
@@ -49,12 +65,12 @@ export class Layout extends Component {
                 <div id="khaje-menu-right">
                   <h2>خبرهای اخیر</h2>
                   <ul>
-                    <li><a href="#">راهنمای انتخاب آبسردکن</a></li>
-                    <li><a href="#">متن ساختی برای تست</a></li>
-                    <li><a href="#">این یک تست است و ارزش دیگری ندارد</a></li>
-                    <li><a href="#">برای تست قالب نیاز به اضافه کردن متن بدون ارزش محتوایی وجود دارد</a></li>
-                    <li><a href="#">متن ساختی برای تست</a></li>
-                    <li><a href="#">این یک تست است و ارزش دیگری ندارد</a></li>
+                    <li><a href="#">{Object(this.state.newsArr[0]).title}</a></li>
+                            <li><a href={"./ news /" + Object(this.state.newsArr[1]).id}>{Object(this.state.newsArr[1]).title}</a></li>
+                          <li><a href={"./ news /" + Object(this.state.newsArr[2]).id}>{Object(this.state.newsArr[2]).title}</a></li>
+                          <li><a href={"./ news /" + Object(this.state.newsArr[3]).id}>{Object(this.state.newsArr[3]).title}</a></li>
+                         <li><a href={"./ news /" + Object(this.state.newsArr[4]).id}>{Object(this.state.newsArr[4]).title}</a></li>
+                             <li><a href={"./ news /" + Object(this.state.newsArr[5]).id}>{Object(this.state.newsArr[5]).title}</a></li>
                   </ul>
                 </div>
                 <div id="khaje-newsletter-picture">

@@ -1,26 +1,35 @@
 ﻿import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import { Comment } from './Comment.js';
 export class WholeNews extends Component {
     link = "https://localhost:44335/news/";
     link2 = "https://localhost:44335/newsPhoto/n/";
+    i = 0;
+    result = "";
+    model = {
+        id: 0,
+        title: "",
+        text: "",
+        adminid: 0,
+        tags: [{}],
+        comments: [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}]
+    }
+
     constructor(props) {
         super(props);
 
         this.state = {
-            singleNews: {},
+            singleNews: this.model,
             newsPhoto: []
         };
     }
-    componentDidMount() {
-        document.title = "صفحه اصلی";
-    }
+
     componentWillMount() {
         axios.get(this.link + this.props.match.params.id).then(res => {
             const result = res.data;
             console.log(res.data);
             this.setState({ singleNews: res.data });
-            document.title = this.state.singleNews.title;
         });
 
         axios.get(this.link2 + this.props.match.params.id).then(res => {
@@ -29,6 +38,7 @@ export class WholeNews extends Component {
             this.setState({ newsPhoto: res.data });
         });
     }
+
     
     render() {
         return (
@@ -49,11 +59,61 @@ export class WholeNews extends Component {
                                 </a><div style={{ clear: 'both' }} /></div>
                                 <br /><br /><div className="post-content"><p>{this.state.singleNews.text}</p></div>
                 <div style={{clear: 'both'}}>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <hr></hr>
+
+
+
+            <div id="comments">
+                <h2><span>نظرات خبر</span></h2>
+                <div class="section-comments">
+                    {this.state.singleNews.comments.map((c) => {
+                        return <Comment body={c}> </Comment>
+                    })}
+
                 </div>
-              </div>
+                <h2><span>ثبت دیدگاه جدید</span></h2>
+                <div class="cmttoptxt">دیدگاه جدید </div>
             </div>
-          </div></div></div>
-            
+                                    {/*<addComment></addComment>*/}
+                                </div>
+                            </div>
+
+
+                        </div>
             );
     }
 }
+
+
+
+
+// addComment Component
+/*<div class="addcmt"><form dir="rtl" class="cmtfrm">
+<p>
+<label for="name">نام</label>
+<input type="text" name="name" id="name" placeholder="پرهام عابد آزاد">
+
+</p>
+<p>
+<label for="email">ایمیل</label>
+<input type="text" name="email" id="email" placeholder="mail@example.ir">
+
+</p>
+<p>
+<label for="web">
+وب سایت</label>
+<input type="text" name="web" id="web" placeholder="www.example.ir">
+
+</p>
+<p>
+<textarea name="text" placeholder="متن خود را بنویسید. "></textarea>
+</p>
+<p>
+<input type="submit" value="ارسال" class="sendbtn">
+</p>
+</form></div>*/
