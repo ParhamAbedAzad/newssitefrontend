@@ -11,6 +11,7 @@ import { AdminLogin } from './components/AdminLogin';
 import { SignUp } from './components/SignUp';
 import { Radio } from './components/Radio';
 import { AboutUs } from './components/AboutUs';
+import { AddNews } from './components/AddNews';
 export default class App extends Component {
     static displayName = App.name;
     
@@ -27,6 +28,7 @@ export default class App extends Component {
                 <Route path='/radio' component={Radio} />
                 <Route path='/contact' component={Contact} />
                 <Route path='/about' component={AboutUs} />
+                <Route path='/AddNews' component={AddNews} />
             </Layout >
           </div>
       /*<Layout>
