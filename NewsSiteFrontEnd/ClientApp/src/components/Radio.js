@@ -25,7 +25,7 @@ export class Radio extends Component {
         />);
     }
     componentWillMount() {
-        axios.get("https://localhost:44335/radio/tracks").then(res => this.setState({ urls: res.data }));
+        axios.get("http://185.252.30.32:6002/radio/tracks").then(res => this.setState({ urls: res.data }));
     }
     render() {
         return (

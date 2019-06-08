@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 import axios from 'axios';
 export class SingleNews extends Component {
-    link = "https://localhost:44335/news/"
+    link = "http://185.252.30.32:6002/news/"
     constructor(props) {
         super(props);
 

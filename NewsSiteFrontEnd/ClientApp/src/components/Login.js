@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 export class Login extends Component {
 
-    link = "https://localhost:44335/Users/authenticate";
+    link = "http://185.252.30.32:6002/Users/authenticate";
     constructor(props) {
         super(props);
         this.state = {

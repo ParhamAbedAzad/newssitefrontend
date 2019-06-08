@@ -4,17 +4,19 @@ import { NavMenu } from './NavMenu';
 import axios from 'axios';
 export class Layout extends Component {
     static displayName = Layout.name;
+    
     signOut() {
         alert("done");
         sessionStorage.clear();
     }
-    link = "https://localhost:44335/news/1/6";
+    link = "http://185.252.30.32:6002/news/1/6";
     new = [];
     constructor(props) {
         super(props);
 
         this.state = {
-            newsArr: [{}]
+            newsArr: [{}],
+            mail: ""
         };
     }
     componentWillMount() {
@@ -79,8 +81,8 @@ export class Layout extends Component {
                                     <div id="khaje-newsletter" className="style-content">
                                         <h3>عضویت در خبرنامه</h3>
                                         <span>دریافت آخرین اخبار روز دنیا با عضویت در خبرنامه خواجه نصیر طوسی :</span>
-                                        <form action>
-                                            <input className="txt-register" type="text" onfocus="if(this.value=='Email Address'){ this.value=''};" onblur="if(this.value=='') this.value='Email Address';" defaultValue="Email Address" />
+                                        <form onSubmit={this.handleSubmit}>
+                                            <input className="txt-register" type="text" onfocus="if(this.value=='Email Address'){ this.value=''}" placeholder="Email Adress" />
                                             <input className="btn-register" type="button" defaultValue="ثبت" />
                                         </form>
                                         <p><a href="#">یا میتوانید از طریق فید خبری اخبار ما را دنبال کنید.</a></p>

@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import { Comment } from './Comment.js';
 export class WholeNews extends Component {
-    link = "https://localhost:44335/news/";
-    link2 = "https://localhost:44335/newsPhoto/n/";
+    link = "http://185.252.30.32:6002/news/";
+    link2 = "http://185.252.30.32:6002/newsPhoto/n/";
     i = 0;
     result = "";
     model = {

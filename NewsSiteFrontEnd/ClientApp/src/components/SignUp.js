@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 export class SignUp extends Component {
 
-    link = "https://localhost:44335/Users/register";
+    link = "http://185.252.30.32:6002/Users/register";
     constructor(props) {
         super(props);
         this.state = {

@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Login } from './Login.js';
 export class Home extends Component {
     static displayName = Home.name;
-    link = "https://localhost:44335/news/1/6";
+    link = "http://185.252.30.32:6002/news/1/6";
     new = [];
     constructor(props) {
         super(props);
