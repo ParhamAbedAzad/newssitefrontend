@@ -9,8 +9,15 @@ build:
     only:
         - master
     before_script:
+        - curl -sL https://deb.nodesource.com/setup_10.x > install_node.sh
+        - chmod +x install_node.sh
+        - ./install_node.sh
+        - apt-get install nodejs
         - apt-get install npm
+        - cd NewsSiteFrontEnd/ClientApp
     script:
+        - npm install
+        - cd ..
         - dotnet restore
         - dotnet build
         - dotnet publish -o publish/
@@ -50,4 +57,4 @@ deploy:
         - ssh-keyscan 185.252.30.32 >> ~/.ssh/known_hosts
         - chmod 644 ~/.ssh/known_hosts
     script:
-        - ssh -v root@185.252.30.32 "./restart_frontend.sh"
+        - ssh -v root@185.252.30.32 "./restart_news_frontend.sh"
