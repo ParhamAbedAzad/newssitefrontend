@@ -11,7 +11,7 @@ export class AddComment extends Component {
     }
     addNewComment() {
         axios.post(this.link, {
-            'newsId': this.props.
+            'newsId': this.props.id,
             "text": this.state.username
         }).then(() => (alert("comment added succesfully"))).catch();
     }

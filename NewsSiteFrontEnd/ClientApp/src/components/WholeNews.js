@@ -29,7 +29,7 @@ export class WholeNews extends Component {
         if (sessionStorage.getItem("token") != null) {// must be changed to ==
             return <p>برای ثبت نظر اول در سایت عضو شوید</p>
         } else {
-            return <AddComment></AddComment>
+            return <AddComment id={this.props.match.params.id} />
         }
     }
     componentWillMount() {
