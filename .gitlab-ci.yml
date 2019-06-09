@@ -1,0 +1,59 @@
+stages:
+    - build
+    - dockerize
+    - deploy
+
+build:
+    image: microsoft/dotnet:2.1-sdk
+    stage: build
+    only:
+        - master
+    before_script:
+        - curl -sL https://deb.nodesource.com/setup_10.x > install_node.sh
+        - chmod +x install_node.sh
+        - ./install_node.sh
+        - apt-get install -y -qq npm
+        - cd NewsSiteFrontEnd/ClientApp
+    script:
+        - npm install
+        - cd ..
+        - dotnet restore
+        - dotnet build
+        - dotnet publish -o publish/
+    artifacts:
+        paths:
+            - NewsSiteFrontEnd/publish/
+
+dockerize:
+    image: docker:stable
+    services:
+        - docker:dind
+    stage: dockerize
+    only:
+        - master
+    script:
+        - ls -a
+        - cp Dockerfile NewsSiteFrontEnd/publish/
+        - cd NewsSiteFrontEnd/publish
+        - docker login registry.gitlab.com -u $GITLAB_USER -p $GITLAB_PASS
+        - docker build -t registry.gitlab.com/three-stooges/newssitefrontend .
+        - docker push registry.gitlab.com/three-stooges/newssitefrontend
+    tags:
+        - docker
+        
+deploy:
+    image: debian
+    stage: deploy
+    when: manual
+    only:
+        - master
+    before_script:
+        - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+        - eval $(ssh-agent -s)
+        - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+        - mkdir -p ~/.ssh
+        - chmod 700 ~/.ssh
+        - ssh-keyscan 185.252.30.32 >> ~/.ssh/known_hosts
+        - chmod 644 ~/.ssh/known_hosts
+    script:
+        - ssh -v root@185.252.30.32 "./restart_frontend.sh"
