@@ -20,6 +20,7 @@ build:
         - cd ..
         - dotnet restore
         - dotnet build
+        - unset CI
         - dotnet publish -o publish/
     artifacts:
         paths:
