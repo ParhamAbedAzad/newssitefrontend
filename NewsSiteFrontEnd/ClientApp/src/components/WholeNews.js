@@ -1,14 +1,26 @@
 ﻿import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import { Comment } from './Comment.js';
 export class WholeNews extends Component {
-    link = "https://localhost:44335/news/";
-    link2 = "https://localhost:44335/newsPhoto/n/";
+    link = "http://185.252.30.32:6002/news/";
+    link2 = "http://185.252.30.32:6002/newsPhoto/n/";
+    i = 0;
+    result = "";
+    model = {
+        id: 0,
+        title: "",
+        text: "",
+        adminid: 0,
+        tags: [{}],
+        comments: [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}]
+    }
+
     constructor(props) {
         super(props);
 
         this.state = {
-            singleNews: {},
+            singleNews: this.model,
             newsPhoto: []
         };
     }
@@ -26,24 +38,82 @@ export class WholeNews extends Component {
             this.setState({ newsPhoto: res.data });
         });
     }
+
     
     render() {
-        console.log(this.state.singleNews)
         return (
-            <div className="mainPage">
-                <section>
-                    <div className="FullNews">
-                        <img className="imgnews" src={'/img/' + this.state.newsPhoto.map(h => h.photoUrl ) + '.jpg'} alt="titleIMG" width="500em" height="250em"></img>
-                        <div>
-                            <h2>{this.state.singleNews.title}</h2>
-                            <p>{this.state.singleNews.text}</p>
+
+
+            <div id="khaje-content-left">
+                <div id="khaje-content-main">
+                    <div id="khaje-news" className="style-content">
+                        <div id="news">
+                            <div className="news-center">
+                                <div className="news-title"><h2>{this.state.singleNews.title}</h2>
+                                    <div>
+                                        <div style={{ clear: 'both' }} />
+                                    </div></div><br />
+                                <div className="post-img" style={{ textAlign: 'center' }}>
+                                    <a href="#" style={{ margin: '0px auto' }}>
+                                    <img classNameName="imgnews" src={'/img/' + this.state.newsPhoto.map(h => h.photoUrl) + '.jpg'} alt="titleIMG" width="500em" height="250em"></img>
+                                </a><div style={{ clear: 'both' }} /></div>
+                                <br /><br /><div className="post-content"><p>{this.state.singleNews.text}</p></div>
+                <div style={{clear: 'both'}}>
+                                </div>
+                            </div>
+
+
                         </div>
-                    </div>
-                </section>
-                <nav>
-                    <img src="img/login.png" alt width="400em" />
-                </nav>
+                        <hr></hr>
+
+
+
+            <div id="comments">
+                <h2><span>نظرات خبر</span></h2>
+                <div class="section-comments">
+                    {this.state.singleNews.comments.map((c) => {
+                        return <Comment body={c}> </Comment>
+                    })}
+
+                </div>
+                <h2><span>ثبت دیدگاه جدید</span></h2>
+                <div class="cmttoptxt">دیدگاه جدید </div>
             </div>
+                                    {/*<addComment></addComment>*/}
+                                </div>
+                            </div>
+
+
+                        </div>
             );
     }
 }
+
+
+
+
+// addComment Component
+/*<div class="addcmt"><form dir="rtl" class="cmtfrm">
+<p>
+<label for="name">نام</label>
+<input type="text" name="name" id="name" placeholder="پرهام عابد آزاد">
+
+</p>
+<p>
+<label for="email">ایمیل</label>
+<input type="text" name="email" id="email" placeholder="mail@example.ir">
+
+</p>
+<p>
+<label for="web">
+وب سایت</label>
+<input type="text" name="web" id="web" placeholder="www.example.ir">
+
+</p>
+<p>
+<textarea name="text" placeholder="متن خود را بنویسید. "></textarea>
+</p>
+<p>
+<input type="submit" value="ارسال" class="sendbtn">
+</p>
+</form></div>*/

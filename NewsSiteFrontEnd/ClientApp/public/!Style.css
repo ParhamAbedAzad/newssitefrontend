@@ -3,59 +3,64 @@ body {
     padding: 0;
     margin: 0;
 }
-h2{
-    font-family:'Courier New';
-    font-size:35px;
-    text-decoration:underline;
+h2 {
+    font-family: 'IRANSans';
+    font-size: 35px;
+    /*text-decoration: underline;*/
 }
 a {
     text-decoration: none;
-    color:black;
+    color: black;
 }
+
 .siteText {
-    
     flex: 8;
 }
+
 #siteText:hover {
     color: white;
     text-shadow: 1px 1px 2px white, 0 0 1em white, 0 0 0.2em white;
     text-shadow: 5px 5px 5px black;
-    font-family:Andalus;
+    font-family: 'IRANSans';
 }
+
 #siteText {
     color: white;
     text-shadow: 2px 2px 2px black;
-    font-family: Andalus;
-    font-size:42px;
+    font-family: 'IRANSans';
+    font-size: 42px;
 }
-.imgnews{
+
+.imgnews {
     border-radius: 15px;
 }
 
 a:link {
     color: black;
 }
-    /* visited link */
 
-    a:visited {
-        
-       color: black;
-    }
-    /* mouse over link */
-    a:hover {
-        color: red;
-    }
+
+a:visited {
+    color: black;
+}
+
+
+a:hover {
+    color: red;
+}
+
 .FullNews {
     float: left;
-    font-size:19px;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+    font-size: 19px;
+    font-family: 'IRANSans';
 }
-.FullNews img{
-    float: left;
-    padding-top: 50px;
-    padding-right: 5px;
-    padding-bottom: 1px;
-}
+
+    .FullNews img {
+        float: left;
+        padding-top: 50px;
+        padding-right: 5px;
+        padding-bottom: 1px;
+    }
 
 .Container {
     display: grid;
@@ -65,24 +70,29 @@ a:link {
 .textandpic {
     display: flex;
 }
+
 .mainPage {
     height: 80em;
-   
 }
+
 .texts {
     flex: 4;
+    font-family: 'IRANSans';
 }
 
 .textandpic img {
     flex: 1.2;
     margin-top: 1em;
 }
+.singleNews {
+    border-bottom: solid #373737 1px;
 
+
+}
 .singleNews h2 {
     margin-bottom: 0;
     padding-bottom: 0;
     line-height: 1em;
-
 }
 
 
@@ -93,12 +103,12 @@ a:link {
     display: flex;
     background-color: #373737;
     align-items: center;
-    color:inherit;
+    color: inherit;
 }
 
 .Container footer {
     display: flex;
-    background-color: #373737;  
+    background-color: #373737;
 }
 
 .mainPage {
@@ -115,7 +125,7 @@ a:link {
 
     .mainPage section {
         display: grid;
-        grid-auto-rows:repeat(8,10em);
+        grid-auto-rows: repeat(8,10em);
         margin-right: 10px;
         flex: 3;
     }
@@ -142,6 +152,7 @@ a:link {
 
 .list a {
     color: white;
+    font-family: 'IRANSans';
 }
 
     .list a:link {
@@ -160,5 +171,5 @@ a:link {
 .list b {
     color: #e53131;
     text-shadow: 1px 1px 1px black;
-    font-family:Andalus  
+    font-family: 'IRANSans';
 }

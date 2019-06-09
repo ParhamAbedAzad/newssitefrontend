@@ -1,11 +1,10 @@
 ﻿import React, { Component } from 'react';
-import './Style.css';
-import { SingleNews } from './News.js';
+import { SingleNews } from './SingleNews.js';
 import axios from 'axios';
 import { Login } from './Login.js';
 export class Home extends Component {
     static displayName = Home.name;
-    link = "https://localhost:44335/news/1/6";
+    link = "http://185.252.30.32:6002/news/1/6";
     new = [];
     constructor(props) {
         super(props);
@@ -14,27 +13,30 @@ export class Home extends Component {
             newsArr: [{}]
         };
     }
-    componentWillMount() {
-        axios.get(this.link).then(res => this.setState({newsArr: res.data}));
+    componentDidMount() {
+        document.title = "صفحه اصلی";
     }
-    
-  render () {
-      return (
-          
-              
-          <div className="mainPage">
-              <section>
-                  <SingleNews new={Object(this.state.newsArr[0])}></SingleNews>
-                  <SingleNews new={Object(this.state.newsArr[1])}></SingleNews>
-                  <SingleNews new={Object(this.state.newsArr[2])}></SingleNews>
-                  <SingleNews new={Object(this.state.newsArr[3])}></SingleNews>
-                  <SingleNews new={Object(this.state.newsArr[4])}></SingleNews>
-                  <SingleNews new={Object(this.state.newsArr[5])}></SingleNews>
-              </section>
-              <nav>
-                  <Login></Login>
-              </nav>
-          </div>
-    );
-  }
+    componentWillMount() {
+        axios.get(this.link).then(res => this.setState({ newsArr: res.data }));
+    }
+
+    render() {
+        return (
+            <div id="khaje-content-left">
+                <div id="khaje-content-main">
+                    <div id="khaje-news" class="style-content">
+                        <h3>آخرین خبرها</h3>
+                        <div id="news">
+                            <SingleNews new={Object(this.state.newsArr[0])}></SingleNews>
+                            <SingleNews new={Object(this.state.newsArr[1])}></SingleNews>
+                            <SingleNews new={Object(this.state.newsArr[2])}></SingleNews>
+                            <SingleNews new={Object(this.state.newsArr[3])}></SingleNews>
+                            <SingleNews new={Object(this.state.newsArr[4])}></SingleNews>
+                            <SingleNews new={Object(this.state.newsArr[5])}></SingleNews>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 }

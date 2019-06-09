@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 import axios from 'axios';
 export class SingleNews extends Component {
-    link = "https://localhost:44335/news/"
+    link = "http://185.252.30.32:6002/news/"
     constructor(props) {
         super(props);
 
@@ -13,7 +13,7 @@ export class SingleNews extends Component {
     var resultStr = "";
     resultStr = str;
     return str;
-}
+    } 
     
 
     /*componentWillMount() {
@@ -27,18 +27,25 @@ export class SingleNews extends Component {
     
     render() {
         return (
-            <div className="singleNews">
+            /*<div className="singleNews">
                 <div className="textandpic">
                     <div className="texts">
                         <a href={"./news/" + this.props.new.id}><h2>{this.props.new.title}</h2></a>
                         <p>{String(this.props.new.text).split(' ').slice(0, 40).join(' ')}'</p>
                     </div>
-                    <img src={'/img/' + this.props.new.id + '.jpg'} alt="titleIMG" width="200em" height="100em" />
+                    <img src={'/img/' + this.props.new.id + '.jpg'} alt="titleIMG" width="200em" height="180em" />
                 </div>
-            </div>
+            </div>*/
+            <div class="news-center">
+                <a href={"./news/" + this.props.new.id}><img src={'/img/' + this.props.new.id + '.jpg'} alt="titleIMG" width="200em" height="180em" /></a>
+                <p><span>{this.props.new.title}</span>{String(this.props.new.text).split(' ').slice(0, 40).join(' ')}</p>
+                <div style={{ clear: 'both' }}>
+                    <div class="btn-more" style={{/*! background: '#ccc'*/}}>
+                        <a href={"./news/" + this.props.new.id} class="btn--more">ادامه خبر</a>
+                            <div></div></div>
+                    </div>
+				</div>
         );
-
-
     }
 }
 SingleNews.propTypes = {
