@@ -1,25 +1,44 @@
 ﻿import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import { withRouter } from 'react-router';
 export class AddNews extends Component {
+
+    linkCheck = "http://185.252.30.32:6002/Admins/isAuthorized";
     link = "http://185.252.30.32:6002/News";
+    
+    bodyData = {
+        title: "",
+        text: ""
+    };
+    config = {
+        headers: {
+            Authorization: ""
+        }
+    }
+
     constructor(props) {
         super(props);
         this.state = {
             title: "",
             text: "",
-            pictureURL: ""
+            pictureURL: "",
+            tags: "",
+            
         };
         this.handleTitleChange = this.handleTitleChange.bind(this);
         this.handleTextChange = this.handleTextChange.bind(this);
-        this.handleFnameChange = this.handleFnameChange.bind(this);
+        this.handleTagsChange = this.handleTagsChange.bind(this);
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.dismissError = this.dismissError.bind(this);
 
 
     }
-
+    componentDidMount() {
+        this.config.headers.Authorization = "bearer " + sessionStorage.getItem("token");
+        axios.get(this.linkCheck, {}, this.config).catch(() => (alert("UnAutherized"))).then(() => (alert("welcome admin")));
+    }
     getHtml() {
         if (!sessionStorage.getItem("success")) {
             return (
@@ -27,7 +46,7 @@ export class AddNews extends Component {
                     <div id="khaje-content-main">
                         <div class="module form-module">
                             <div className="form">
-                                <h2>ثبت حساب کاربری جدید</h2>
+                                <h2>ثبت خبر جدید</h2>
                                 <form onSubmit={this.handleSubmit}>
                                     {
                                         this.state.error &&
@@ -37,21 +56,12 @@ export class AddNews extends Component {
                                         </h3>
                                     }
 
-                                    <label>* UserName</label>
-                                    <input type="text" data-test="username" value={this.state.username} onChange={this.handleUserChange} placeholder="نام کاربری" /><br></br>
-                                    <label>* Password</label>
-                                    <input type="password" data-test="password" value={this.state.password} onChange={this.handlePassChange} placeholder="رمز عبور" /><br></br>
-                                    <label>* Repeat Password</label>
-                                    <input type="password" data-test="passwordrepeat" value={this.state.passwordrepeat} onChange={this.handlePassrepChange} placeholder="تکرار رمز عبور" /><br></br>
-                                    <label>First Name</label>
-                                    <input type="text" data-test="firstname" value={this.state.firstname} onChange={this.handleFnameChange} placeholder="نام" /><br></br>
-                                    <label>Last Name</label>
-                                    <input type="text" data-test="lastname" value={this.state.lastname} onChange={this.handleLnameChange} placeholder="نام خانوادگی" /><br></br>
-                                    <label>* Email address</label>
-                                    <input type="text" data-test="email" value={this.state.email} onChange={this.handleEmailChange} placeholder="ایمیل" /><br></br>
-                                    <label>Tell Number</label>
-                                    <input type="text" data-test="tellnumber" value={this.state.tellnumber} onChange={this.handleTellNumChange} placeholder="شماره تلفن" /><br></br>
-                                    <p id="notice">فیلد های دارای * باید پر شوند</p>
+                                    <label>* Title</label>
+                                    <input type="text" data-test="title" value={this.state.title} onChange={this.handleTitleChange} placeholder="عنوان خبر" /><br></br>
+                                    <label>* Text</label>
+                                    <input type="text" data-test="text" value={this.state.text} onChange={this.handleTextChange} placeholder="متن خبر" /><br></br>
+                                    <label>* Tags</label>
+                                    <input type="text" data-test="Tags" value={this.state.tags} onChange={this.handleTagsChange} placeholder="(دسته بندی ها(با یک خط فاصله بینشان" /><br></br>
                                     <input type="submit" value="Sign Up" data-test="submit" />
                                 </form>
                             </div>
@@ -80,19 +90,14 @@ export class AddNews extends Component {
             return this.setState({ error: '* Text is required' });
         }
 
-        if (this.state.passwordrepeat != this.state.password) {
+        if (this.state.Tags != this.state.password) {
             return this.setState({ error: '* entered passwords do not match' });
         }
-        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        if (!re.test(this.state.email)) {
-            return this.setState({ error: 'wrong email format' });
-        }
+        this.config.headers.Authorization = "bearer " + sessionStorage.getItem("token");
         axios.post(this.link, {
             "title": this.state.username,
             "text": this.state.password
-        }).then(res => {
-            this.setState({ obj: Object(res.data) })
-            window.location.reload();
+        }, this.config).then(() => {
             alert("news added successfully");
         }).catch(function (error) {
             if (error.response) {
@@ -110,49 +115,51 @@ export class AddNews extends Component {
 
     }
 
-    handleUserChange(evt) {
+    handleTitleChange(evt) {
         this.setState({
             username: evt.target.value,
         });
     };
 
-    handlePassChange(evt) {
+    handleTextChange(evt) {
         this.setState({
             password: evt.target.value,
         });
     }
-    handlePassrepChange(evt) {
+    handleTagsChange(evt) {
         this.setState({
             passwordrepeat: evt.target.value,
         });
     }
-    handleEmailChange(evt) {
-        this.setState({
-            email: evt.target.value,
-        });
-    };
-    handleFnameChange(evt) {
-        this.setState({
-            firstname: evt.target.value,
-        });
-    };
-    handleLnameChange(evt) {
-        this.setState({
-            lastname: evt.target.value,
-        });
-    };
-    handleTellNumChange(evt) {
-        this.setState({
-            tellnumber: evt.target.value,
-        });
-    };
 
 
     render() {
         return (
-            <div >
-                {this.getHtml()}
-            </div>
-        );
+            <div id="khaje-content-left">
+                <div id="khaje-content-main">
+                    <div className="insertnews">>
+                        <div id="posting" className="addcmt">
+                            <h2>ثبت خبر جدید</h2>
+                            <form className="cmtfrm" onSubmit={this.handleSubmit}>
+                                {
+                                    this.state.error &&
+                                    <h3 data-test="error" onClick={this.dismissError}>
+                                        <button onClick={this.dismissError}>✖</button>
+                                        <p id="err">{this.state.error}</p>
+                                    </h3>
+                                }
+
+                                <label for="title">* Title</label>
+                                <input type="text" id="name" data-test="title" value={this.state.title} onChange={this.handleTitleChange} placeholder="عنوان خبر" /><br></br>
+                                <label for="tags">* Tags</label>
+                                <input type="text" id="tags" data-test="Tags" value={this.state.tags} onChange={this.handleTagsChange} placeholder="(دسته بندی ها(با یک خط فاصله بینشان" /><br></br>
+                                <label for="text">* Text</label>
+                                <textarea type="text" data-test="text" value={this.state.text} onChange={this.handleTextChange} placeholder="متن خبر" /><br></br>
+                                <input type="submit" class="sendbtn" value="اضافه کردن خبر" data-test="submit" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>);
     }
 }

@@ -25,7 +25,13 @@ export class WholeNews extends Component {
             newsPhoto: []
         };
     }
-
+    wiseAddComment() {
+        if (sessionStorage.getItem("token") != null) {// must be changed to ==
+            return <p>برای ثبت نظر اول در سایت عضو شوید</p>
+        } else {
+            return <AddComment></AddComment>
+        }
+    }
     componentWillMount() {
         axios.get(this.link + this.props.match.params.id).then(res => {
             const result = res.data;
@@ -40,7 +46,7 @@ export class WholeNews extends Component {
         });
     }
 
-    
+
     render() {
         return (
 
@@ -56,10 +62,10 @@ export class WholeNews extends Component {
                                     </div></div><br />
                                 <div className="post-img" style={{ textAlign: 'center' }}>
                                     <a href="#" style={{ margin: '0px auto' }}>
-                                    <img classNameName="imgnews" src={'/img/' + this.state.newsPhoto.map(h => h.photoUrl) + '.jpg'} alt="titleIMG" width="500em" height="250em"></img>
-                                </a><div style={{ clear: 'both' }} /></div>
+                                        <img classNameName="imgnews" src={'/img/' + this.state.newsPhoto.map(h => h.photoUrl) + '.jpg'} alt="titleIMG" width="500em" height="250em"></img>
+                                    </a><div style={{ clear: 'both' }} /></div>
                                 <br /><br /><div className="post-content"><p>{this.state.singleNews.text}</p></div>
-                <div style={{clear: 'both'}}>
+                                <div style={{ clear: 'both' }}>
                                 </div>
                             </div>
 
@@ -69,24 +75,24 @@ export class WholeNews extends Component {
 
 
 
-            <div id="comments">
-                <h2><span>نظرات خبر</span></h2>
-                <div class="section-comments">
-                    {this.state.singleNews.comments.map((c) => {
-                        return <Comment body={c}> </Comment>
-                    })}
+                        <div id="comments">
+                            <h2><span>نظرات خبر</span></h2>
+                            <div class="section-comments">
+                                {this.state.singleNews.comments.map((c) => {
+                                    return <Comment body={c}> </Comment>
+                                })}
 
-                </div>
-                <h2><span>ثبت دیدگاه جدید</span></h2>
-                <div class="cmttoptxt">دیدگاه جدید </div>
-            </div>
-                                    <AddComment></AddComment>
-                                </div>
                             </div>
-
-
+                            <h2><span>ثبت دیدگاه جدید</span></h2>
+                            <div class="cmttoptxt">دیدگاه جدید </div>
+                        {this.wiseAddComment()}
                         </div>
-            );
+                    </div>
+                </div>
+
+
+            </div>
+        );
     }
 }
 

@@ -13,6 +13,7 @@ import { Radio } from './components/Radio';
 import { AboutUs } from './components/AboutUs';
 import { NotFound } from './components/NotFound';
 import { blank } from './components/blank';
+import { AddNews } from './components/AddNews';
 
 import { BrowserRouter, Link, Switch, Redirect } from 'react-router-dom';
 
@@ -25,6 +26,7 @@ export default class App extends Component {
             <div>  <Layout>
                 <Switch>
                     <Route exact path='/' component={Home} />
+                    <Route exact path='/:id' component={Home} />
                     <Route exact path='/index' component={Home} />
                     <Route path='/News/:id' component={WholeNews} />
                     <Route path='/Login' component={Login} />
@@ -34,6 +36,7 @@ export default class App extends Component {
                     <Route path='/contact' component={Contact} />
                     <Route path='/about' component={AboutUs} />
                     <Route path='/404' component={NotFound} />
+                    <Route path='/addnews' component={AddNews} />
                     <Redirect to="/404"  />
                 </Switch>
             </Layout >
