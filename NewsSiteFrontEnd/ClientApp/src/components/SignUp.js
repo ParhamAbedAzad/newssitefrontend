@@ -97,7 +97,7 @@ export class SignUp extends Component {
             return this.setState({ error: '* email is required' });
         }
 
-        if (this.state.passwordrepeat != this.state.password) {
+        if (this.state.passwordrepeat !== this.state.password) {
             return this.setState({ error: '* entered passwords do not match' });
         }
         var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
