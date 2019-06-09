@@ -46,7 +46,6 @@ dockerize:
 deploy:
     image: debian
     stage: deploy
-    when: manual
     only:
         - master
     before_script:
