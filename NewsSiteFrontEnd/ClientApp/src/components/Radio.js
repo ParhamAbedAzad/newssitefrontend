@@ -18,7 +18,7 @@ export class Radio extends Component {
         }
         
         return (<ReactAudioPlayer
-            src="https://localhost:44335/radio"
+            src="http://185.252.30.32:6002/radio"
             autoPlay
             controls
             loop
