@@ -4,7 +4,7 @@ import { NavMenu } from './NavMenu';
 import axios from 'axios';
 export class Layout extends Component {
     static displayName = Layout.name;
-    
+
     signOut() {
         alert("done");
         sessionStorage.clear();
@@ -85,9 +85,10 @@ export class Layout extends Component {
                                             <input className="txt-register" type="text" onfocus="if(this.value=='Email Address'){ this.value=''}" placeholder="Email Adress" />
                                             <input className="btn-register" type="button" defaultValue="ثبت" />
                                         </form>
-                                        <p><a href="#">یا میتوانید از طریق فید خبری اخبار ما را دنبال کنید.</a></p>
+                                        <p><a href="/donbal">یا میتوانید از طریق فید خبری اخبار ما را دنبال کنید.</a></p>
                                     </div>
-                                </div></div>
+                                </div>
+                            </div>
                             {this.props.children}
                         </div>
                     </div>
