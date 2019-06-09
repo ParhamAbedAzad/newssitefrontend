@@ -11,13 +11,18 @@ import { AdminLogin } from './components/AdminLogin';
 import { SignUp } from './components/SignUp';
 import { Radio } from './components/Radio';
 import { AboutUs } from './components/AboutUs';
+import { NotFound } from './components/NotFound';
+
+import { BrowserRouter, Link,  Switch } from 'react-router-dom';
+
+
 export default class App extends Component {
     static displayName = App.name;
     
     render() {
         return (
-          <div>  <Layout>
-
+            <div>  <Layout>
+                
                 <Route exact path='/' component={Home} />
                 <Route exact path='/index' component={Home} />
                 <Route path='/News/:id' component={WholeNews} />
@@ -27,6 +32,7 @@ export default class App extends Component {
                 <Route path='/radio' component={Radio} />
                 <Route path='/contact' component={Contact} />
                 <Route path='/about' component={AboutUs} />
+                <Route path='*' component={NotFound} />
             </Layout >
           </div>
       /*<Layout>
