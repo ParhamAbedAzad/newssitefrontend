@@ -6,13 +6,13 @@ export class Comment extends Component {
         return (
             <div class="comment" id="comment-1">
                 <img src="img/avatar.jpg" alt="" class="userGravatar"></img>
-                    <div class="userInfo">
-                        <span class="uName">mohammad</span>
-                        <span class="cDate hidden-xs"> چها4شنبه , ۲۵ تیر ۱۳۹۳</span>
+                <div class="userInfo">
+                    <span class="uName">{this.props.body.username}</span>
+                    <span class="cDate hidden-xs">{this.props.body.date}</span>
 
-                    </div>
-                    <div class="cBody">
-                        <p>این یک متن تست است ارزشی ندارد باور کن </p>
+                </div>
+                <div class="cBody">
+                    <p>{this.props.body.body}</p>
                 </div>
             </div>
         );

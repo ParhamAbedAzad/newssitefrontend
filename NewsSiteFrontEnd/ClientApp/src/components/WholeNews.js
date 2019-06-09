@@ -2,6 +2,7 @@
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import { Comment } from './Comment.js';
+import { AddComment } from './AddComment.js';
 export class WholeNews extends Component {
     link = "http://185.252.30.32:6002/news/";
     link2 = "http://185.252.30.32:6002/newsPhoto/n/";
@@ -79,7 +80,7 @@ export class WholeNews extends Component {
                 <h2><span>ثبت دیدگاه جدید</span></h2>
                 <div class="cmttoptxt">دیدگاه جدید </div>
             </div>
-                                    {/*<addComment></addComment>*/}
+                                    <AddComment></AddComment>
                                 </div>
                             </div>
 
