@@ -116,6 +116,7 @@ export class SignUp extends Component {
             this.setState({ obj: Object(res.data) })
             sessionStorage.setItem("success", "success")
             window.location.reload();
+            
         }).catch(function (error) {
             if (error.response) {
                 alert(JSON.stringify(error.response.data));

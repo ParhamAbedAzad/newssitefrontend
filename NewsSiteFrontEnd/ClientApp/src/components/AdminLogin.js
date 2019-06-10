@@ -45,7 +45,7 @@ export class AdminLogin extends Component {
                 </div>);
         }
         else {
-            return <p>you are signed in as {sessionStorage.getItem("username")}</p>
+            return <div><p>you are signed in as {sessionStorage.getItem("username")}</p>{/* <button href="/addnews" id="btn-search" value="اضافه کردن خبر" />*/}</div>
         }
     }
 

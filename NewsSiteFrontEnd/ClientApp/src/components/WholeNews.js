@@ -27,7 +27,7 @@ export class WholeNews extends Component {
         };
     }
     wiseAddComment() {
-        if (sessionStorage.getItem("token") != null) {// must be changed to ==
+        if (sessionStorage.getItem("token") == null) {// must be changed to ==
             return <p>برای ثبت نظر اول در سایت عضو شوید</p>
         } else {
             return <AddComment id={this.props.match.params.id} />

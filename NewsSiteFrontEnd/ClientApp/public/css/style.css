@@ -292,7 +292,14 @@ body {
     border-left: 0;
     font: 11px tahoma;
 }
-
+#btnofpages {
+    border-radius: 3px 0 0 3px;
+    height: 25px;
+    text-shadow: 1px 1px solid #231f20;
+    padding: 2px 5px 5px;
+    float: center;
+    width: 15px;
+}
 #btn-search {
     border-radius: 3px 0 0 3px;
     height: 25px;

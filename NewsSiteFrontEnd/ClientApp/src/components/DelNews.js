@@ -2,11 +2,11 @@
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import { withRouter } from 'react-router';
-export class AddNews extends Component {
+export class DelNews extends Component {
 
     linkCheck = "http://185.252.30.32:6002/Admins/isAuthorized";
     link = "http://185.252.30.32:6002/News";
-    
+
     bodyData = {
         title: "",
         text: ""
@@ -20,15 +20,9 @@ export class AddNews extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            title: "",
-            text: "",
-            pictureURL: "",
-            tags: "",
-            
+            id: ""
         };
-        this.handleTitleChange = this.handleTitleChange.bind(this);
-        this.handleTextChange = this.handleTextChange.bind(this);
-        this.handleTagsChange = this.handleTagsChange.bind(this);
+        this.handleIdChange = this.handleIdChange.bind(this);
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.dismissError = this.dismissError.bind(this);
@@ -51,18 +45,14 @@ export class AddNews extends Component {
                                 <form onSubmit={this.handleSubmit}>
                                     {
                                         this.state.error &&
-                                        <h3  data-test="error" onClick={this.dismissError}>
+                                        <h3 data-test="error" onClick={this.dismissError}>
                                             <button onClick={this.dismissError}>✖</button>
                                             <p id="err">{this.state.error}</p>
                                         </h3>
                                     }
 
-                                    <label>* Title</label>
-                                    <input type="text" data-test="title" value={this.state.title} onChange={this.handleTitleChange} placeholder="عنوان خبر" /><br></br>
-                                    <label>* Text</label>
-                                    <input type="text" data-test="text" value={this.state.text} onChange={this.handleTextChange} placeholder="متن خبر" /><br></br>
-                                    <label>* Tags</label>
-                                    <input type="text" data-test="Tags" value={this.state.tags} onChange={this.handleTagsChange} placeholder="(دسته بندی ها(با یک خط فاصله بینشان" /><br></br>
+                                    <label>* ID</label>
+                                    <input type="text" data-test="title" value={this.state.id} onChange={this.handleIdChange} placeholder="ID" /><br></br>
                                     <input type="submit" value="Sign Up" data-test="submit" />
                                 </form>
                             </div>
@@ -84,30 +74,13 @@ export class AddNews extends Component {
 
     handleSubmit(evt) {
         evt.preventDefault();
-        if (!this.state.title) {
-            return this.setState({ error: '* Title is required' });
-        }
-        if (!this.state.text) {
-            return this.setState({ error: '* Text is required' });
-        }
-
-        if (this.state.Tags != this.state.password) {
-            return this.setState({ error: '* entered passwords do not match' });
+        if (!this.state.id) {
+            return this.setState({ error: 'ID is required' });
         }
         this.config.headers.Authorization = "bearer " + sessionStorage.getItem("token");
-        let V = this.state.tags.split(' ');
-        let arr = V.map((s) => ({ "tag": s }));
-        /*alert(JSON.stringify({
-            "title": this.state.title,
-            "text": this.state.text,
-            "tags": arr
-        }));*/
-        axios.post(this.link, {
-            "title": this.state.title,
-            "text": this.state.text,
-            "tags": arr
-        }, this.config).then(() => {
-            alert("news added successfully");
+
+        axios.delete(this.link + "/" + this.state.id, this.config).then(() => {
+            alert("news Deleted successfully");
         }).catch(function (error) {
             if (error.response) {
                 alert(JSON.stringify(error.response.data));
@@ -124,29 +97,19 @@ export class AddNews extends Component {
 
     }
 
-    handleTitleChange(evt) {
+    handleIdChange(evt) {
         this.setState({
-            title: evt.target.value,
+            id: evt.target.value,
         });
     };
 
-    handleTextChange(evt) {
-        this.setState({
-            text: evt.target.value,
-        });
-    }
-    handleTagsChange(evt) {
-        this.setState({
-            tags: evt.target.value,
-        });
-    }
 
 
     render() {
         return (
             <div id="khaje-content-left">
                 <div id="khaje-content-main">
-                    <div className="insertnews">>
+                    <div className="insertnews">
                         <div id="posting" className="addcmt">
                             <h2>ثبت خبر جدید</h2>
                             <form className="cmtfrm" onSubmit={this.handleSubmit}>
@@ -158,13 +121,9 @@ export class AddNews extends Component {
                                     </h3>
                                 }
 
-                                <label for="title">* Title</label>
-                                <input type="text" id="name" data-test="title" value={this.state.title} onChange={this.handleTitleChange} placeholder="عنوان خبر" /><br></br>
-                                <label for="tags">* Tags</label>
-                                <input type="text" id="tags" data-test="Tags" value={this.state.tags} onChange={this.handleTagsChange} placeholder="(دسته بندی ها(با یک خط فاصله بینشان" /><br></br>
-                                <label for="text">* Text</label>
-                                <textarea type="text" data-test="text" value={this.state.text} onChange={this.handleTextChange} placeholder="متن خبر" /><br></br>
-                                <input type="submit" class="sendbtn" value="اضافه کردن خبر" data-test="submit" />
+                                <label for="ID">* ID</label>
+                                <input type="text" id="name" data-test="id" placeholder="NewsId" value={this.state.id}  onChange={this.handleIdChange}  /><br></br>
+                                <input type="submit" class="sendbtn" value="حذف کردن خبر" data-test="submit" />
                             </form>
                         </div>
                     </div>
