@@ -8,6 +8,7 @@ export class WholeNews extends Component {
     link2 = "http://185.252.30.32:6002/newsPhoto/n/";
     i = 0;
     result = "";
+
     model = {
         id: 0,
         title: "",
